@@ -1,0 +1,83 @@
+
+.logo{
+  width: 100px;
+  height: 100px;
+  }
+
+/* img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+} */
+.logo:hover{
+  background-color: #ddd;
+  color: black;
+}
+ .logo:active{
+  background-color: dodgerblue;
+  color: white;
+ }
+
+.group-logo{
+  
+}
+.logo-name{
+  padding-left: 5%;
+  color: #0000ff;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-inline: auto;
+  margin-top: 1.4rem;
+
+}
+
+.logo-name:hover{
+  color: dodgerblue;
+}
+
+ .logo-name:active{
+  background-color: dodgerblue;
+  color: white;
+ }
+
+ .navbar{
+  margin-inline: auto;
+  /* background-color:aliceblue; */
+  --max-width: 1110px;
+  --padding: 300px; 
+   width: min(var(--max-width), 100% - (var(--padding) * 2));
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  }
+
+ .wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+ }
+
+ .list {
+  font-size: 1.2rem;
+}
+
+.list {
+  display: flex;
+  gap: clamp(1rem, 5vw, 7rem);
+  font-weight: 500;
+}
+
+.list a {
+  text-decoration: none;
+  color:blue;
+}
+
+.list a:hover,
+.list a:focus {
+  color:deepskyblue;
+}
+
+ul[role="list"]
+ {
+  list-style: none;
+}

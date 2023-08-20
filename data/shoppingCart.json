@@ -1,0 +1,28 @@
+{
+  "shoppingCart": [
+    {
+      "name": "T-Shirt",
+      "price": 19.99,
+      "image": "https://i.imgur.com/KeQtXT3.png",
+      "id": 1
+    },
+    {
+      "name": "Jeans",
+      "price": 39.99,
+      "image": "https://i.imgur.com/fVpadKg.png",
+      "id": 2
+    },
+    {
+      "name": "T-Shirt",
+      "price": 19.99,
+      "image": "https://i.imgur.com/KeQtXT3.png",
+      "id": 3
+    },
+    {
+      "name": "Sweater",
+      "price": 24.99,
+      "image": "https://media.istockphoto.com/id/1093999678/photo/young-handsome-man-in-oversized-sweatshirt-standing-isolated-on-gray-background.jpg?s=612x612&w=0&k=20&c=n6H-pv_2u2pLjMmHy35aacAWL4iB59eIB3hRAqQKwvU=",
+      "id": 4
+    }
+  ]
+}
