@@ -5,20 +5,22 @@ import "/home/dinashboul/React_contextApi/myapp/src/componenets/Users/usr.css"
 function Model({ isOpen, closeModal,image_url1,setImageUrl1,update,isUpdate,isModalOpen }) {
   console.log(closeModal,isModalOpen)
   const styleBtn={
-    width:"20%",
+    width:"10%",
+    margin:"10px",
   
   }
-
-  return (
-    <section style={{display:"flex",justifyContent:"center",alignItems:"center",position:'relative'}}>
-    <Modal  className="modal-overlay" show={isOpen} onHide={closeModal} style={{zIndex:"1"}}>
-      <Modal.Body >
+    return (
+    <section >
+    <Modal  className="modal-overlay"
+     show={isOpen} onHide={closeModal} 
+     style={{zIndex:"1",display:"flex",justifyContent:"center",alignItems:"center"}}>
+      <Modal.Body  style={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:"100px"}}> 
       <input type="text " style={{width:"20%",backgroundColor:"gray",color:"black",fontSize:"2em"}}  
       value ={image_url1}
        onChange={(e) =>
         setImageUrl1(e.target.value)}/>
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer style={{display:"flex",justifyContent:"center"}}>
         <Button style={styleBtn} variant="secondary" onClick={closeModal}>
           Close
         </Button>

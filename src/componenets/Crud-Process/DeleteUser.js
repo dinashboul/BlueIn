@@ -3,20 +3,23 @@ import '/home/dinashboul/React_contextApi/myapp/src/componenets/Crud-Process/del
 import UseFetch from '../UseFetch';
 import '/home/dinashboul/React_contextApi/myapp/src/componenets/Crud-Process/delete.css';
 import axios from 'axios';
+import Fetching from '../Fetching';
 
 function DeleteUser() {
-    const  { dataUser } = UseFetch('https://store-wbly.onrender.com/users');
+    const  { data } = Fetching('https://store-wbly.onrender.com/users');
     // Delete User/////////////////////////
 
     const handleDelteUser=(e,user_id)=>{
       e.preventDefault();
       const configration={
         method:"DELETE",
-        url:""
+        url:`https://store-wbly.onrender.com/user/${user_id}`
       }
       axios(configration)
       .then(()=>{
+        console.log("the user id is",user_id)
         alert("User is Deleted")
+        window.location.reload(true)
 
       })
       .catch((err)=> console.log("correct delete"))
@@ -26,7 +29,7 @@ function DeleteUser() {
         <>
    <div className="container1">
       <div className="row">
-            {dataUser && dataUser.map((item) => (
+            {data && data.map((item) => (
                     <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={item.user_id}>
                         <div className="our-team">
                             <div className="picture">
@@ -36,7 +39,7 @@ function DeleteUser() {
                                 <h3 className="name">{item.full_name}</h3>
                                 <h4 className="title">email is ={item.email}</h4>
                                 <button 
-                                onClick={(e) => handleDelteUser(e, item)}
+                                onClick={(e) => handleDelteUser(e, item.user_id)}
                                 >Delet User</button>
                             </div>
                             {/* <ul className="social">

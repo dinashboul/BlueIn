@@ -1,42 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 function SignUp() {
  
-  // const [data, setdata] = useState({ name: "", email: "", password: "" });
-  // const [newUser, setNewUser] = useState([]);
-
-  // const submittHandler = e => {
-  //   e.preventDefault();
-  //   console.log(data)
-  //   handleRegister(data)
-    
-
-  //   setdata({ name: "", email: "", password: "" })
-  // }
   
-  // const handleRegister =async (user) => {
-  //   // error message for matching name with password
-  //   // if (!v1 || !v2) {
-  //   //   setErrMsg("Invalid Entry");
-  //   //   return;
-  //   // }
-  //   try{
-  //     const response = await axios.post(
-  //     REGISTER_URL,
-  //     JSON.stringify({user}),
-  //     {
-  //       headers:{"Content-Type":"application/json"},
-  //       withCredentials:true,
-  //     }
-  //     );
-  //     setdata({ name: "", email: "", password: "" })
-  //   }catch(err){
-  //     console.log("no register")
-  //   }
-        
-  //     }
   //     // //////////////////////////////////////////////
-
+  const history=useHistory()
   const [name,setName]=useState("");
   const [password,setPassword]=useState("");
   const [email,setEmail]=useState("");
@@ -66,6 +35,7 @@ function SignUp() {
       setName("");
       setEmail("");
       setPassword("")
+      history.push('/login')
     }).catch((err)=>{
       err=new Error()
       console.log("hte err is  ",err)})
@@ -75,7 +45,7 @@ function SignUp() {
 
 
   return (    
-  <section style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+  <section style={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:"10%"}}>
 
     <form className='container-login' onSubmit={(e)=>handleSubmit(e)}>
       <div className='inputs'>

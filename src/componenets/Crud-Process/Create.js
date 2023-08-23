@@ -25,18 +25,13 @@ function Create() {
   const [description, setDescript] = useState("")
   const [imageUrl, setImageUrl] = useState("")
   const [price, setPrice] = useState("")
+  const [inputValue, setInputValue] = useState('');
+
   const [categories, setcategories] = useState([])
-  const {user}=useAuth()
   
   const{adminContext}=useLogin()
-  console.log("the admin case is->>",adminContext)
  
-const handleCategories=(cate)=>{
-  const array=[]
-  array.push(cate)
-  setcategories(array)
-  
- }
+ 
   const handleAdd= async(e) =>{
     e.preventDefault();
       const configuration={
@@ -46,8 +41,9 @@ const handleCategories=(cate)=>{
           name,
           description,
           imageUrl,
-          categories,
-          price
+          price,
+          categories:[...categories, inputValue]
+          
 
         }
 
@@ -56,6 +52,7 @@ const handleCategories=(cate)=>{
       .then((result)=>
       { console.log("item is adding")
       history.push("/")
+
       })
       .catch((err)=>
       err=new Error())
@@ -108,9 +105,8 @@ return (<>
         <li>
           <label htmlFor="inputField"></label>
           <input type="text" className="inputFields" id="categories" name="categories" placeholder="categories"
-            value={categories}
-            onChange={(e) => handleCategories(e.target.value)}
-            required />
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}           />
         </li>
         <li>
           <label htmlFor="inputField"></label>

@@ -4,10 +4,12 @@ import '/home/dinashboul/React_contextApi/myapp/src/componenets/Login/loginStyle
 import axios from 'axios';
 import { useAuth } from '/home/dinashboul/React_contextApi/myapp/src/contexts/AuthContext.js';
 import { useLogin } from '../../contexts/LoginContext';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 function LoginForm() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history=useHistory()
 
   const { emailContext } = useLogin();
   const{adminPages}=useLogin()
@@ -51,6 +53,7 @@ function LoginForm() {
           result.data.isAdmin && adminPages(result.data.isAdmin)
           setEmail("")
           setPassword("")
+          history.push('/')
 
         })
         .catch((err) =>console.log(err))
@@ -60,17 +63,9 @@ function LoginForm() {
     
   }
 
-
-  const LogOut = () => {
-    logoutAuth(token)
-    setEmail("")
-    setPassword("")
-
-  }
-
   return (<>
 
-    {user ? (<section style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+    {!user ? (<section style={{ display: "flex", justifyContent: "center", alignItems: "center" ,marginTop:"10%"}}>
       <div className='center'>
         <form className='container-login' onSubmit={(e) => submittHandler(e)}>
           <div className='inputs'>
@@ -91,23 +86,7 @@ function LoginForm() {
     </section>
     ) : (
       <section style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <div className='center'>
-          <form className='container-login' onSubmit={(e) => submittHandler(e)}>
-            <div className='inputs'>
-              <h2 className='brand-title'>Login</h2>
-              <div className="form-outline mb-4">
-                <label className="inputs" htmlFor="form1Example1">Email </label>
-                <input type="email" id="email" className="form-control" onChange={e => setEmail(e.target.value)} value={email} />
-              </div>
-
-              <div className="form-outline mb-4">
-                <label className="inputs" htmlFor="form1Example2">Password</label>
-                <input type="password" id="form1Example2" className="form-control" onChange={e => setPassword(e.target.value)} value={password} />
-              </div>
-              <button type="submit" value="LOGIN" className="btn btn-primary btn-block">Sign in</button>
-            </div>
-          </form>
-        </div>
+        
       </section>)}
   </>)
 }

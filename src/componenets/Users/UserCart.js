@@ -5,25 +5,50 @@ import axios from 'axios';
 import Model from './Model';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLogin } from '../../contexts/LoginContext';
-import { Row ,Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import UseFetch from '/home/dinashboul/React_contextApi/myapp/src/componenets/UseFetch.js';
 
 const UserCart = () => {
-
+  const{imageProfile}=useLogin()
   const {dataContext}=useLogin()
   console.log("the data context is",dataContext)
 
   // console.log("the email of user is ",email)
-  const [isUpdate, setIsUpdate] = useState(false)
+const [isUpdate, setIsUpdate] = useState(false)
 // const apiId=`https://store-wbly.onrender.com/user/${user_id}`
 const {user}=useAuth()
-const {dataUser}=UseFetch(`https://store-wbly.onrender.com/userbyemail/${dataContext.email}`)
+// const {data}=UseFetch(`https://store-wbly.onrender.com/userbyemail/${dataContext.email}`)
+// ///////////////////////
+const [data, setdata] = useState({});
 
-  console.log("the dataUser is ->>", dataUser)
+useEffect(()=>{
+  const fetch=async()=>{
+      const configuration={
+          method:"Get",
+          url:`https://store-wbly.onrender.com/userbyemail/${dataContext.email}`,
+          data:{
+              data
+          }
+  
+        }
+        await axios(configuration)
+        .then((result)=>
+        { console.log("Get data is good")
+          setdata(result.data)
+        })
+        .catch((err)=>
+        {err=new Error()
+      console.log("no data")
+    }
+)};
+      fetch();
+},[]);
+
+// //////////////////
+
+  console.log("the data is ->>", data)
 
   //  update pic ////////////////////////////////////////////////////////////////////////////////////
-  const imgCard =dataUser.image_url;
+  const imgCard =data.image_url && data.image_url;
   const [image_url, setImageUrl] = useState(imgCard);
 
   const update = async (e) => {
@@ -31,7 +56,7 @@ const {dataUser}=UseFetch(`https://store-wbly.onrender.com/userbyemail/${dataCon
 
     const configuration = {
       method: "Put",
-      url: "https://store-wbly.onrender.com/user/" + dataUser.user_id,
+      url: "https://store-wbly.onrender.com/user/" + data.user_id,
       data: {
         image_url
       }
@@ -41,6 +66,7 @@ const {dataUser}=UseFetch(`https://store-wbly.onrender.com/userbyemail/${dataCon
       .then((result) => {
         console.log("the Update of image success", result.data)
         setIsUpdate(true)
+        window.location.reload(true)
       })
       .catch((err) => {
         err = new Error()
@@ -56,6 +82,7 @@ const {dataUser}=UseFetch(`https://store-wbly.onrender.com/userbyemail/${dataCon
 
   const closeModal = () => {
     setIsModalOpen(false);
+    imageProfile(image_url)
     console.log("model is closed",isModalOpen)
 
   };
@@ -64,10 +91,10 @@ const {dataUser}=UseFetch(`https://store-wbly.onrender.com/userbyemail/${dataCon
   return (<>
   {user?(<>
     <div className="image-area" style={{marginBottom:"30%"}}>
-      <div className="img-wrapper" key={dataUser.user_id}>
+      <div className="img-wrapper" key={data.user_id}>
         <img
-          src={dataUser.image_url} alt='' />
-        <h2>{dataUser.full_name}</h2>
+          src={data.image_url} alt='' />
+        <h2>{data.full_name}</h2>
         <ul><li>
           <a
             href='#'
@@ -89,9 +116,9 @@ const {dataUser}=UseFetch(`https://store-wbly.onrender.com/userbyemail/${dataCon
     </div>
 {/* // ////////////////////// Favorite item /////////////////////////// */}
  
-  <div className="main1"  >
+  <section  >
   
-  {dataUser.favorite && dataUser.favorite.map((item)=>
+  {data.favorite && data.favorite.map((item)=>
  <article key={item.item_id} style={{width:"30%",height:"500px",top:"500px",left:"20%",display:"inline-block",justifyContent:"space-around",marginRight:"3em",bottom:"40px"}}>
  <div className="article-wrapper">
    <figure>
@@ -113,7 +140,7 @@ const {dataUser}=UseFetch(`https://store-wbly.onrender.com/userbyemail/${dataCon
 </article>
 )}
 
-</div>
+</section>
   
 </>
 

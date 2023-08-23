@@ -4,11 +4,10 @@ import axios from 'axios'
 
 const  Fetching = (url) =>{
     const [data,setdata]=useState(null)
-     
     useEffect(()=>{
         const fetch=async()=>{
             const configuration={
-                method:"Get",
+                method:"GET",
                 url:url,
                 data:{
                     data

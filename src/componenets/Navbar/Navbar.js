@@ -10,18 +10,22 @@ const Navbar = () => {
   const history = useHistory()
   const { logoutAuth } = useAuth()
 
+  const {imageContext,removeImage}=useLogin()
   const { removeEmail, removeAdmin } = useLogin()
   const { adminContext } = useLogin()
+  const{dataContext}=useLogin()
+  console.log("navbar email is ->",dataContext)
 
   const LogOut = () => {
     logoutAuth()
     removeEmail()
     removeAdmin()
-    history.push('/login')
+    removeImage()
+    history.push('/')
 
   }
   return (
-    <div className="navbar">
+    <div className="navbar" style={{top:"0"}}>
       <div className="logo-section">
         {/* <img className="logo" alt="" src="https://png.pngtree.com/template/20200316/ourmid/pngtree-bird-blue-logo-template-image_354657.jpg" /> */}
         <Link to="/">BlueIn</Link>
@@ -35,6 +39,7 @@ const Navbar = () => {
 
             {user ? (<>
               <li><Link to="/usercart"> Profile</Link></li>
+              <li> <p style ={{color:"blue"}}>Welcome 🖐{dataContext.email}</p></li>
               </> 
             ) :
               (<>
@@ -46,8 +51,8 @@ const Navbar = () => {
         </div>
         {user ? (
         <div className="buttonclass">
-        <img className="profile-image" src="https://content.woolovers.com/img/o/a8c06-48838_f101l_cyanblue_w_5.jpg" alt=""/>
-        <button onClick={LogOut} style={{marginTop:"12px", width: "5em", color: "blue", right: "" ,height:"2em",fontSize:"1em"}}>Logout</button>
+        <img className="profile-image" src={imageContext} alt=""/>
+        <button onClick={LogOut} style={{marginTop:"12px", marginRight:"38%",width: "5em", color: "blue", right: "" ,height:"2em",fontSize:"1em"}}>Logout</button>
         </div>
   
       ):(<></>)}

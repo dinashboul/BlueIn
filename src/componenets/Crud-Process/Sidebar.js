@@ -7,16 +7,19 @@ function Sidebar() {
   return (
     <SideNav style={{backgroundColor:" #ecf0f5",
     	boxShadow: "14px 14px 20px #cbced1, -14px -14px 20px white",
+        position:"fixed",
         gap:"500px",
         marginright:"40px",
-        color:"blue"
+        color:"blue",
+        zIndex:"1",
+       height:"50%"
 }}
     onSelect={(selected) => {
         // Add your code here
     }}
 >
     <SideNav.Toggle />
-    <SideNav.Nav  defaultSelected="home">
+    <SideNav.Nav style={{}} defaultSelected="home">
         <NavItem eventKey="home">
         <NavIcon>
                 <i style ={{fontSize:"2rem",fontweight:"bold"}} />

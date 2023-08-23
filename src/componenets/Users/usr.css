@@ -152,28 +152,11 @@
 	
   }
   /* /////////////////////////////////// Favourite items /////////////////////////////////// */
-  body{
-	background-color:aliceblue;
-	max-height: 200vh;
-	
-  }
-  *,
-  *::before,
-  *::after {
-	box-sizing: border-box;
-  }
-  
-  *{
-	margin: 0;
-	padding: 0;
-	font: inherit;
-  
-  }
-  ul[role='list'],
-  ol[role='list'] {
-	list-style: none;
-  }
-  
+ 
+  section{
+	margin: 100px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));  }
 
   article {
 	--img-scale: 1.001;
@@ -188,8 +171,11 @@
 	transition: all 0.4s ease-in-out;
 	overflow: hidden;
 	margin-top: 3rem;
-   
+	margin-left: 0;
+	padding-left: 0;
+	width: 100%;
   }
+  
   
   article a::after {
 	position: absolute;
@@ -267,8 +253,9 @@
   
   .articles {
 	display: grid;
-	max-width: 1200px;
+	width: 1200px;
 	margin-inline: auto;
+	margin-left: 0;
 	padding-inline: 24px;
 	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 	gap: 24px;

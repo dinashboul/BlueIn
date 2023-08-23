@@ -13,6 +13,7 @@ import Create from '/home/dinashboul/React_contextApi/myapp/src/componenets/Crud
 import Home from './componenets/Home/Home';
 import Test from './componenets/Test';
 import DeleteUser from './componenets/Crud-Process/DeleteUser';
+import UpdateItem from './componenets/Crud-Process/UpdateItem';
 function App() {
   return(
    
@@ -39,6 +40,9 @@ function App() {
               </Route>
               <Route path='/usercart' >
                 <UserCart />
+              </Route>
+              <Route path='/updateitem' >
+                <UpdateItem />
               </Route>
               <Route>
                 <DeleteUser path='/deleteuser'/>

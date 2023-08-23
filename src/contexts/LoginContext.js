@@ -9,6 +9,8 @@ export function useLogin(){
 export function LoginProvider({ children }) {
     const [dataContext,setDataContext]=useState(JSON.parse(localStorage.getItem('email')) || null)
     const[adminContext,setAdminCotext]=useState(JSON.parse(localStorage.getItem('admin')) || null);
+    const[imageContext,setImageContext]=useState(localStorage.getItem('image')|| null);
+
 
     const emailContext = (email) => {
         const dataContext1 = { email };
@@ -32,8 +34,19 @@ export function LoginProvider({ children }) {
     localStorage.removeItem('admin')
     setAdminCotext(null)
    }
+
+   const imageProfile= (image)=>{
+    localStorage.setItem('image' ,image)
+    setImageContext(image)
+
+   }
+
+   const removeImage=()=>{
+    localStorage.removeItem('image')
+    setImageContext(null)
+   }
     return (
-      <LoginContext.Provider value={{dataContext,emailContext,removeEmail,adminContext,adminPages,removeAdmin}}>
+      <LoginContext.Provider value={{dataContext,emailContext,removeEmail,adminContext,adminPages,removeAdmin,imageProfile,removeImage,imageContext}}>
         {children}
       </LoginContext.Provider>
     );

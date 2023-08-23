@@ -2,12 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f1f1f1;
   padding: 10px 20px;
+  height:40%;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+  box-sizing: border-box;
+  background: #ecf0f3;
 }
 
 .logo-section {
   flex: 1;
+  margin-left: 8%;
 }
 
 .links {
@@ -21,8 +25,9 @@
   padding: 0;
   margin: 0;
   display:flex;
-  justify-content:space-around;
-  gap:3px;
+  /* justify-content:space-around; */
+
+  gap:100px;
 }
 
 .buttonclass {
@@ -41,3 +46,17 @@
   object-fit: cover; /* Maintain aspect ratio and cover */
   margin-right: 10px; /* Add some spacing */
 }
+
+a {
+  color: #007bff; /* Blue color for links */
+  text-decoration: none; /* Remove default underline */
+  transition: color 0.2s ease; /* Smooth color transition on hover */
+  font-size: 1.5rem;
+}
+
+a:hover {
+  color: #0056b3; /* Darker blue color on hover */
+  text-decoration:none
+}
+
+
