@@ -10,7 +10,6 @@ import UserCart from './componenets/Users/UserCart'
 import Navbar from './componenets/Navbar/Navbar';
 import Create from './componenets/Crud-Process/Create'
 import Home from './componenets/Home/Home';
-import Test from './componenets/Test';
 import DeleteUser from './componenets/Crud-Process/DeleteUser';
 import UpdateItem from './componenets/Crud-Process/UpdateItem';
 // import Footer from './componenets/footer/Footer';
@@ -45,9 +44,7 @@ function App() {
               <Route path='/login'>
                 <LoginForm />
               </Route>
-              <Route path='/test'>
-                <Test />
-              </Route>
+              
               <Route path='/usercart' >
                 <UserCart />
               </Route>
