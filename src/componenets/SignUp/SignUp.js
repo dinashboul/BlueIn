@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import "/home/dinashboul/React_contextApi/myapp/src/componenets/SignUp/signup.css"
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useLogin } from '../../contexts/LoginContext';
+import { useTheme } from '../../contexts/ThemeContext';
+
 function SignUp() {
- 
   
   //     // //////////////////////////////////////////////
+  const {theme}=useTheme()
   const history=useHistory()
   const [name,setName]=useState("");
   const [password,setPassword]=useState("");
   const [email,setEmail]=useState("");
   const [image_url,setImage]=useState("https://th.bing.com/th/id/R.888e074ed492c906bbcb7dd8085b91a0?rik=SrKCZaObq08f3Q&pid=ImgRaw&r=0&sres=1&sresct=1")
   const [register,setRegister]=useState(false)
-
+  const {adminContext}=useLogin()
   const handleSubmit=(e)=>{
     e.preventDefault();
     console.log(name,email,password)
@@ -35,7 +39,8 @@ function SignUp() {
       setName("");
       setEmail("");
       setPassword("")
-      history.push('/login')
+      adminContext ? history.push('/'):history.push('/login')
+      
     }).catch((err)=>{
       err=new Error()
       console.log("hte err is  ",err)})
@@ -45,9 +50,10 @@ function SignUp() {
 
 
   return (    
-  <section style={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:"10%"}}>
-
-    <form className='container-login' onSubmit={(e)=>handleSubmit(e)}>
+  <section style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <div className='center' >
+    <form className='container-login' 
+      onSubmit={(e)=>handleSubmit(e)}>
       <div className='inputs'>
       <h2 className='brand-title'>SignUp</h2>
       <div className="form-outline mb-4">
@@ -68,10 +74,9 @@ function SignUp() {
       </div>
       {register ? (
           <p className="text-success">You Are Registered Successfully</p>
-        ) : (
-          <p className="text-danger">You Are Not Registered</p>
-        )}
+        ) : (<></>   )}
     </form>
+    </div>
     </section>
   )
   

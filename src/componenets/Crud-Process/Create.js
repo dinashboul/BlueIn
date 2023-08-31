@@ -1,36 +1,28 @@
 import React, { useState } from 'react';
-import '/home/dinashboul/React_contextApi/myapp/src/style/create.css'
+import '/home/dinashboul/React_contextApi/myapp/src/componenets/Crud-Process/create.css'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLogin } from '../../contexts/LoginContext';
+import Carousal from '../Home/Carousal';
 function Create() {
   const history=useHistory();
-  const style = {
-    background: "url(https://source.unsplash.com/TV2gg2kZD1o/1600x800)",
-    backgroundRepeat: "no-repeat",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "800px",
-    height: "450px",
-    textAlign: "center",
-    display: "flex",
-    color: "white",
-    boxShadow: "3px 10px 20px 5px rgba(0, 0, 0, .5)",
-  }
+  
 
   const [name, setName] = useState("")
   const [description, setDescript] = useState("")
-  const [imageUrl, setImageUrl] = useState("")
-  const [price, setPrice] = useState("")
+  const [imageUrl, setImageUrl] = useState('')
+  const [price, setPrice] = useState(null)
   const [inputValue, setInputValue] = useState('');
 
   const [categories, setcategories] = useState([])
   
   const{adminContext}=useLogin()
- 
+
+  const handleCategoryChange = (option,e) => {
+    const selectedOptions = [...categories,option]
+    setcategories(selectedOptions);
+  };
  
   const handleAdd= async(e) =>{
     e.preventDefault();
@@ -40,9 +32,9 @@ function Create() {
         data:{
           name,
           description,
-          imageUrl,
+          image_url: imageUrl,
           price,
-          categories:[...categories, inputValue]
+          categories:categories
           
 
         }
@@ -62,7 +54,9 @@ function Create() {
 
 return (<>
   {adminContext ? (
-  <div className="signupSection">
+    <section style={{display:"grid",gridTemplateColumns:"repeat(3,fr)",marginLeft:"8%"}}>
+   <section  style={{marginTop:"8%",gridColumn:"1"}}> <Carousal /></section>
+  <div className="signupSection" style={{marginTop:"8%"}}>
     <div className="info">
       <h2 style={{ 
         color:"blue",
@@ -96,21 +90,36 @@ return (<>
         </li>
         <li>
           <label htmlFor="inputField"></label>
-          <textarea type="textarea" style={{marginLeft:"0px"}} className="inputFields" id="image" name="image" placeholder="ImageUrl"
+          <input type="text" className="inputFields" id="image" name="image" placeholder="image"
             value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-            required />
+            onChange={(e) => setImageUrl(e.target.value)}    
+             required     
+            />
         </li>
 
         <li>
-          <label htmlFor="inputField"></label>
-          <input type="text" className="inputFields" id="categories" name="categories" placeholder="categories"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}           />
+        <select
+        className="inputFields"
+        style={{ color: "black" }}
+        id="categories"
+        name="categories"
+        multiple
+        value={categories}
+        onChange={(e)=>handleCategoryChange(e.target.value)}
+      >
+        <option disabled>Category</option>
+        <option value="women">Women</option>
+        <option value="man">Man</option>
+        <option value="kids">Kids</option>
+        <option value="bags">Bags</option>
+        <option value="accessories">Accessories</option>
+      </select>
+      <p>Selected Categories: {categories.join(', ')}</p>
+
         </li>
         <li>
           <label htmlFor="inputField"></label>
-          <input type="text" className="inputFields" id="price" name="number" placeholder="Price"
+          <input type="number" className="inputFields" id="price" name="number" placeholder="Price"
 
             value={price}
             onChange={(e) => setPrice(e.target.value)}
@@ -123,6 +132,7 @@ return (<>
       </ul>
     </form>
   </div>
+  </section>
   ):(<h1 style={{top:"50%",left:"40%",color:"blue", fontSize:"2rem"}} > This Page is sepcified to Admin</h1>)}</>
   
 )

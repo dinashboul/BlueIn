@@ -1,6 +1,5 @@
 import React from 'react'
 import '/home/dinashboul/React_contextApi/myapp/src/componenets/Crud-Process/delete.css'
-import UseFetch from '../UseFetch';
 import '/home/dinashboul/React_contextApi/myapp/src/componenets/Crud-Process/delete.css';
 import axios from 'axios';
 import Fetching from '../Fetching';
@@ -28,7 +27,7 @@ function DeleteUser() {
     return (
         <>
    <div className="container1">
-      <div className="row">
+      <div className="row" style={{marginTop: "30px",marginLeft: "10%"}}>
             {data && data.map((item) => (
                     <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={item.user_id}>
                         <div className="our-team">
@@ -36,8 +35,8 @@ function DeleteUser() {
                                 <img className="img-fluid" src={item.image_url} alt=""/>
                             </div>
                             <div className="team-content">
-                                <h3 className="name">{item.full_name}</h3>
-                                <h4 className="title">email is ={item.email}</h4>
+                                <h3 className="title">Name : {item.full_name}</h3>
+                                <h4 className="title">Email is : {item.email}</h4>
                                 <button 
                                 onClick={(e) => handleDelteUser(e, item.user_id)}
                                 >Delet User</button>

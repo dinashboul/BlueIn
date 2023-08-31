@@ -1,0 +1,44 @@
+.dark-theme {
+  background-color: #514e4e;
+  color: #4c0ff2;
+  }
+.categorie-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height:50%;
+    box-shadow: 14px 14px 20px #acc1d7;
+    box-sizing: border-box;
+    background: #f0f3f5;
+}
+
+a {
+    font-weight: bold;
+    color: #007bff; /* Blue color for links */
+    text-decoration: none; /* Remove default underline */
+    transition: color 0.2s ease; /* Smooth color transition on hover */
+    font-size: 1.5rem;
+  }
+  
+  a:hover {
+    color: #b30086; /* Darker blue color on hover */
+    text-decoration:none
+  }
+
+  .category-section{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 50px; 
+  min-width: auto;
+  margin-inline: auto;
+  margin-left: 70px;
+  margin-right: 70px;
+ 
+  padding-inline: 24px;
+  }
+
+
+  .active-link {
+    color: red;
+  }

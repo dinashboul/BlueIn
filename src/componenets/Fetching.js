@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
  
 
-const  Fetching = (url) =>{
+const  Fetching = (url) =>{  
     const [data,setdata]=useState(null)
     useEffect(()=>{
         const fetch=async()=>{
@@ -21,11 +21,13 @@ const  Fetching = (url) =>{
               })
               .catch((err)=>
               {err=new Error()
+                alert(" No Matching Items")
             console.log("no data")
           }
     )};
-            fetch();
-     },[]);
+   fetch()
+            
+     },[url]);
   return {data}
 }
 export default Fetching

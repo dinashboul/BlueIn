@@ -1,23 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap'); */
 
 input {
   caret-color: red;
 }
 
-/* body {
-  margin: 0;
-  width: 100vw;
+section{
   height: 100vh;
-  background: #ecf0f3;
-  place-items: center;
-  overflow: hidden;
-  font-family: poppins; 
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-} */
-
+}
 .container-login {
   position: relative;
   width: 350px;
@@ -116,4 +105,4 @@ h1 {
   top: 0;
   left: 0;
 }
-/* ///////////////////////// header//////////////////////// */
+

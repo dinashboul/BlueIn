@@ -6,17 +6,19 @@ function DeleteItem({deleteItem}) {
     const handleDelete =()=>{
        const configrations={
             method:"DELETE",
-            url:"",
+            url:`https://store-wbly.onrender.com/items/${deleteItem}`,
 
         }
         axios(configrations)
         .then(()=>{
             console.log("he item is deleted")
+            window.location.reload(true)
         })
         .catch((err)=>console.log("the err is ",err))
 
     }
-  return (handleDelete)
+    handleDelete()
+  return (<></>)
 }
 
 export default DeleteItem

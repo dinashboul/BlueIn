@@ -9,9 +9,8 @@ function Sidebar() {
     	boxShadow: "14px 14px 20px #cbced1, -14px -14px 20px white",
         position:"fixed",
         gap:"500px",
-        marginright:"40px",
+        marginright:"470px",
         color:"blue",
-        zIndex:"1",
        height:"50%"
 }}
     onSelect={(selected) => {

@@ -5,57 +5,92 @@ import { useState } from "react";
 import { useLogin } from "../../contexts/LoginContext";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Sidebar from "../Crud-Process/Sidebar";
+import Fetching from "../Fetching";
+import axios from "axios";
+import Home from "../Home/Home";
+import{ useSearchData} from '/home/dinashboul/React_contextApi/myapp/src/contexts/SearchContext.js'
+import { useTheme } from "../../contexts/ThemeContext";
 const Navbar = () => {
   const { user } = useAuth()
   const history = useHistory()
   const { logoutAuth } = useAuth()
 
+  const {theme,toggleTheme}=useTheme()
+
   const {imageContext,removeImage}=useLogin()
   const { removeEmail, removeAdmin } = useLogin()
   const { adminContext } = useLogin()
   const{dataContext}=useLogin()
+  const {nameContext,removeName}=useLogin()
   console.log("navbar email is ->",dataContext)
-
+  // Search //////////////////
+  const {SearchDataFun}=useSearchData()
+  const [searchQuery, setSearchQuery] = useState('');
+   
+  const handleSearch=(e)=>{
+    if (e.keyCode === 13){
+    console.log("search--> ",searchQuery)
+    if (searchQuery !== '') {
+      // SearchDataFun(`https://store-wbly.onrender.com/items/search/${searchQuery}`)
+      SearchDataFun(`https://store-wbly.onrender.com/items/search/item?name=${searchQuery}`)
+     
+    } 
+    else{window.location.reload(true)}
+  }
+  }
+  // Logout///////////////////
   const LogOut = () => {
     logoutAuth()
     removeEmail()
     removeAdmin()
     removeImage()
+    removeName()
     history.push('/')
 
   }
+  
   return (
-    <div className="navbar" style={{top:"0"}}>
-      <div className="logo-section">
-        {/* <img className="logo" alt="" src="https://png.pngtree.com/template/20200316/ourmid/pngtree-bird-blue-logo-template-image_354657.jpg" /> */}
-        <Link to="/">BlueIn</Link>
-      </div>
-        <div className="links">
+    <div className='navbar'
+     style={{top:"0",backgroundColor:theme === 'dark' ? '#514e4e' : ''}}>
+     <div className="links">
           <ul className="list " aria-label="Primary" role="list">
+        
+        <li style={{marginRight:"3em", marginLeft: '8%'}}>
+          <div style={{display:"flex",gap:"10px"}}>
+        <img to="#" onClick={toggleTheme}
+        style={{ width:"50px",height:"50px",}}
+        alt="" src="https://png.pngtree.com/template/20200316/ourmid/pngtree-bird-blue-logo-template-image_354657.jpg"
+        />
+        <Link> BlueIn</Link></div></li>
+     
+             <li>  <input type="text" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} 
+             
+                onKeyDown={handleSearch}
+                placeholder="Search..."/></li>
             <li><Link to="/"> Home</Link> </li>
             {adminContext ? (
             <Sidebar/>
             ) : (<></>)}
 
-            {user ? (<>
-              <li><Link to="/usercart"> Profile</Link></li>
-              <li> <p style ={{color:"blue"}}>Welcome 🖐{dataContext.email}</p></li>
-              </> 
-            ) :
-              (<>
-                <li><Link to="/login"> Login </Link></li>
-                <li><Link to="/signup"> SignUP </Link></li>
-              </>)
-            }
+
+        {user ? ( 
+              <li><div className="buttonclass">
+              <Link to="/usercart"> Profile</Link>
+              {/* <Link to="/usercart" style ={{color:"#007bff",fontSize:"1.5rem"}}>Welcome 🖐{nameContext}</Link> */}
+              <img className="profile-image" 
+               src={imageContext} alt=""/>
+                <button onClick={LogOut} className="logout-button">Logout</button>
+              </div>
+              </li>
+        ):(<>
+          <li><Link to="/login"> Login </Link></li>
+          <li><Link to="/signup"> SignUP </Link></li>
+        </>)}
           </ul>
+          
         </div>
-        {user ? (
-        <div className="buttonclass">
-        <img className="profile-image" src={imageContext} alt=""/>
-        <button onClick={LogOut} style={{marginTop:"12px", marginRight:"38%",width: "5em", color: "blue", right: "" ,height:"2em",fontSize:"1em"}}>Logout</button>
-        </div>
-  
-      ):(<></>)}
+       
+
 </div>
 
   );

@@ -5,15 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from '/home/dinashboul/React_contextApi/myapp/src/contexts/AuthContext.js';
 import { LoginProvider } from './contexts/LoginContext';
-
+import { SearchProvider } from './contexts/SearchContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <ThemeProvider>
     <AuthProvider>
+      <SearchProvider>
       <LoginProvider>
     <App />
     </LoginProvider>
+    </SearchProvider>
     </AuthProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

@@ -14,18 +14,29 @@ import Home from './componenets/Home/Home';
 import Test from './componenets/Test';
 import DeleteUser from './componenets/Crud-Process/DeleteUser';
 import UpdateItem from './componenets/Crud-Process/UpdateItem';
+import Footer from './componenets/footer/Footer';
+import CategoriesNav from './categories/CategoriesNav';
+import CategoriesPage from './categories/CategoriesPage';
+import { useTheme } from './contexts/ThemeContext';
 function App() {
+  const {theme}=useTheme()
   return(
    
-  <div className="App">
+  <div className='App' style={{backgroundColor:theme==='dark'?' #514e4e':''}}>
     <Router>
-        <div className="App">
+        <div className={`App ${theme === 'dark' ? 'dark-theme' : ''}`} >
           <Navbar />
-          <div className="content">
+          <CategoriesNav/>
+          <div className='content'>
             <Switch>
               <Route exact path='/'>
                 <Home />
               </Route>
+              <Route
+                path="/category/:category"
+                render={({ match }) => <CategoriesPage category={match.params.category} />}
+              />
+             
               <Route path='/signup'>
                 <SignUp />
               </Route>
@@ -52,6 +63,7 @@ function App() {
               </Route>
             </Switch>
           </div>
+          {/* <Footer/> */}
         </div>
       </Router>
 

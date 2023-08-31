@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import '/home/dinashboul/React_contextApi/myapp/src/componenets/Login/loginStyle.css'
+import '/home/dinashboul/React_contextApi/myapp/src/index.css'
 import axios from 'axios';
 import { useAuth } from '/home/dinashboul/React_contextApi/myapp/src/contexts/AuthContext.js';
 import { useLogin } from '../../contexts/LoginContext';
@@ -65,9 +66,11 @@ function LoginForm() {
 
   return (<>
 
-    {!user ? (<section style={{ display: "flex", justifyContent: "center", alignItems: "center" ,marginTop:"10%"}}>
-      <div className='center'>
-        <form className='container-login' onSubmit={(e) => submittHandler(e)}>
+    {!user ? (<section style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div className='center' >
+        <form className='container-login' 
+       
+        onSubmit={(e) => submittHandler(e)}>
           <div className='inputs'>
             <h2 className='brand-title'>Login</h2>
             <div className="form-outline mb-4">
