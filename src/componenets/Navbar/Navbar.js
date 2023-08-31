@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import './navbar.css'
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../AuthContext";
 import { useState } from "react";
 import { useLogin } from "../../contexts/LoginContext";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";

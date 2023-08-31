@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './loginStyle.css'
 import '../../index.css'
 import axios from 'axios';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../AuthContext';
 import { useLogin } from '../../contexts/LoginContext';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 function LoginForm() {

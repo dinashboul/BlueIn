@@ -3,7 +3,7 @@ import "./usr.css"
 import "../Home/homestyle.css"
 import axios from 'axios';
 import Model from './Model';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../AuthContext';
 import { useLogin } from '../../contexts/LoginContext';
 import Fetching from '../Fetching';
 
