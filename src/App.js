@@ -4,11 +4,11 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import SignUp from "/home/dinashboul/React_contextApi/myapp/src/componenets/SignUp/SignUp.js"
+import SignUp from "./componenets/SignUp/SignUp"
 import LoginForm from './componenets/Login/LoginForm';
-import UserCart from '/home/dinashboul/React_contextApi/myapp/src/componenets/Users/UserCart.js'
+import UserCart from './componenets/Users/UserCart'
 import Navbar from './componenets/Navbar/Navbar';
-import Create from '/home/dinashboul/React_contextApi/myapp/src/componenets/Crud-Process/Create.js'
+import Create from './componenets/Crud-Process/Create'
 import Home from './componenets/Home/Home';
 import Test from './componenets/Test';
 import DeleteUser from './componenets/Crud-Process/DeleteUser';
