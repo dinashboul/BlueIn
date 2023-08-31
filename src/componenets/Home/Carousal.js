@@ -1,11 +1,11 @@
 import React from 'react'
 import { Carousel } from 'react-carousel-minimal';
-import '/home/dinashboul/React_contextApi/myapp/src/componenets/Home/carousal.css'
-import Fetching from '../Fetching';
+import './carousal.css'
+// import Fetching from '../Fetching';
 import { useTheme } from '../../contexts/ThemeContext';
-function Carousal() {
+function Carousal({data}) {
   const {theme}=useTheme()
-    const { data } = Fetching('https://store-wbly.onrender.com/items');
+    // const { data } = Fetching('https://store-wbly.onrender.com/items');
     
       const carouselData = data ? data.map((item, index) => ({
         image: item.image_url,
@@ -44,7 +44,7 @@ function Carousal() {
                 pauseIconSize="40px"
                 slideBackgroundColor="darkgrey"
                 slideImageFit="cover"
-                // thumbnails={false}
+                thumbnails={false}
                 style={{
                   textAlign: "center",
                   Width: "10%",

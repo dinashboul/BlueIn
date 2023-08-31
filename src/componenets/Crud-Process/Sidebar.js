@@ -1,5 +1,5 @@
 import React from 'react'
-import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import SideNav, {  NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
@@ -14,7 +14,7 @@ function Sidebar() {
        height:"50%"
 }}
     onSelect={(selected) => {
-        // Add your code here
+       console.log("dina")
     }}
 >
     <SideNav.Toggle />

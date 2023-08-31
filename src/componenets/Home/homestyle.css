@@ -119,7 +119,7 @@ Generic layout (demo looks)
 
 @media screen and (max-width: 960px) {
   article {
-    container: card/inline-size;
+    -container: card/inline-size;
   }
   .article-body p {
     display: none;
@@ -233,7 +233,7 @@ Generic layout (demo looks)
 }
 
 .el-wrapper:hover .img {
-  webkit-filter: blur(7px);
+  -webkit-filter: blur(7px);
   -o-filter: blur(7px);
   -ms-filter: blur(7px);
   filter: blur(7px);

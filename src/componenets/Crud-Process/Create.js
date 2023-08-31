@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import '/home/dinashboul/React_contextApi/myapp/src/componenets/Crud-Process/create.css'
+import './create.css'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { useAuth } from '../../contexts/AuthContext';
-import { useLogin } from '../../contexts/LoginContext';
+import {useLogin} from '../../contexts/LoginContext'
 import Carousal from '../Home/Carousal';
 function Create() {
   const history=useHistory();
@@ -13,7 +12,6 @@ function Create() {
   const [description, setDescript] = useState("")
   const [imageUrl, setImageUrl] = useState('')
   const [price, setPrice] = useState(null)
-  const [inputValue, setInputValue] = useState('');
 
   const [categories, setcategories] = useState([])
   

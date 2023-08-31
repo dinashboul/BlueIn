@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import "/home/dinashboul/React_contextApi/myapp/src/componenets/Users/usr.css"
-import "/home/dinashboul/React_contextApi/myapp/src/componenets/Home/homestyle.css"
+import "./usr.css"
+import "../Home/homestyle.css"
 import axios from 'axios';
 import Model from './Model';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLogin } from '../../contexts/LoginContext';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import UseGetItemById from '../UseGetItemById';
 import Fetching from '../Fetching';
 
 const UserCart = () => {
@@ -44,7 +42,7 @@ useEffect(()=>{
     }
 )};
       fetch();
-},[]);
+},[dataContext.email,userId]);
 
 // //////////////////
 
@@ -74,7 +72,7 @@ useEffect(()=>{
 
 
   //  update pic ////////////////////////////////////////////////////////////////////////////////////
-  const {imageContext,removeImage}=useLogin()
+  const {removeImage}=useLogin()
 
   const imgCard =data.image_url && data.image_url;
   const [image_url, setImageUrl] = useState(imgCard);
@@ -116,17 +114,8 @@ useEffect(()=>{
     console.log("model is closed",isModalOpen)
     window.location.reload(true)
   };
-//  /////////////////////Delete item from favourite///////////////////
-const[isFound,setIsFound]=useState(false)
-// Fetch the item if exist or not 
-const fetch = async (itemId) => {
-  try {
-    const response = await axios.get(`https://store-wbly.onrender.com/items/${itemId}`);
-    setIsFound(true);
-  } catch (error) {
-    setIsFound(false);
-  }
-};
+
+
 
 
 
@@ -178,12 +167,12 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
       <div className="img-wrapper" key={data.user_id}>
         <img
           src={data.image_url} alt='' />
-        <h2>{data.full_name}</h2>
+        <h2 style={{color:"blue"}}>{data.full_name}</h2>
         <ul><li>
           <a
-            href='#'
+            
             onClick={openModal}
-            style={{color:'white',fontSize:"1rem"}}
+            style={{color:'blue',fontSize:"1rem",backgroundColor:"none",top:"0"}}
           >Edit</a>
           </li></ul>
           
@@ -199,13 +188,13 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
       </div>
     </div>
 {/* // ////////////////////// Favorite item /////////////////////////// */}
-<span style={{marginTop:"30%",display:"grid",gridTemplateColumns: "auto auto",
+<span style={{marginTop:"30%",display:"grid",gridTemplateColumns: "auto auto",marginLeft:"85%",
 justifyContent:"center",alignItems: "center",columnGap: "10px",color:'blue',fontSize:"1.3rem",fontWeight:"bold"}}>
       <button  onClick={handleDamege}
-      style={{marginTop:"50%",}}
+      style={{marginTop:"50%",width:"300px"}}
       >Refresh your items</button>
  </span>
-<section className="articles" style={{marginTop:"3%",marginLeft:'0',marginRight:"40px"}}>
+<section className="articles" style={{marginTop:"3%",marginLeft:'50%',marginRight:"40px"}}>
   
   {data.favorite&&data.favorite.map((item)=>
       
@@ -227,7 +216,7 @@ justifyContent:"center",alignItems: "center",columnGap: "10px",color:'blue',font
             <div className="h-bg-inner"></div>
           </div>
 
-          <a className="cart" href="#">
+          <p className="cart">
             <span className="price">{item.price}$</span>
            
             { user &&  (
@@ -236,7 +225,7 @@ justifyContent:"center",alignItems: "center",columnGap: "10px",color:'blue',font
                  ) }
             
 
-          </a>
+          </p>
         </div>
       </div>
     </div>

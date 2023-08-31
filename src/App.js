@@ -7,14 +7,13 @@ import {
 import SignUp from "/home/dinashboul/React_contextApi/myapp/src/componenets/SignUp/SignUp.js"
 import LoginForm from './componenets/Login/LoginForm';
 import UserCart from '/home/dinashboul/React_contextApi/myapp/src/componenets/Users/UserCart.js'
-import NotFound from './componenets/NotFound';
 import Navbar from './componenets/Navbar/Navbar';
 import Create from '/home/dinashboul/React_contextApi/myapp/src/componenets/Crud-Process/Create.js'
 import Home from './componenets/Home/Home';
 import Test from './componenets/Test';
 import DeleteUser from './componenets/Crud-Process/DeleteUser';
 import UpdateItem from './componenets/Crud-Process/UpdateItem';
-import Footer from './componenets/footer/Footer';
+// import Footer from './componenets/footer/Footer';
 import CategoriesNav from './categories/CategoriesNav';
 import CategoriesPage from './categories/CategoriesPage';
 import { useTheme } from './contexts/ThemeContext';
@@ -58,9 +57,7 @@ function App() {
               <Route>
                 <DeleteUser path='/deleteuser'/>
               </Route>
-              <Route path='*'>
-                <NotFound />
-              </Route>
+              
             </Switch>
           </div>
           {/* <Footer/> */}

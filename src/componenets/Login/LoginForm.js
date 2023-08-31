@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
-import '/home/dinashboul/React_contextApi/myapp/src/componenets/Login/loginStyle.css'
-import '/home/dinashboul/React_contextApi/myapp/src/index.css'
+import './loginStyle.css'
+import '../../index.css'
 import axios from 'axios';
-import { useAuth } from '/home/dinashboul/React_contextApi/myapp/src/contexts/AuthContext.js';
+import { useAuth } from '../../contexts/AuthContext';
 import { useLogin } from '../../contexts/LoginContext';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 function LoginForm() {

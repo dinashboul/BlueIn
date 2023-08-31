@@ -1,6 +1,6 @@
 /* Overlay background */
 .modal {
-    display: none;
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
@@ -12,12 +12,12 @@
   }
   
   /* Modal content */
-  .modal-content1 {
-    background-color: white;
+  .modal-content {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 300px;
+    top:10%;
   }
   
   /* Close button */

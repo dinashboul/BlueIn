@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import '/home/dinashboul/React_contextApi/myapp/src/componenets/Home/homestyle.css'
+import './homestyle.css'
 import axios from 'axios'
 import Fetching from '../Fetching'
 import { useAuth } from '../../contexts/AuthContext'
@@ -48,7 +48,7 @@ const{theme}=useTheme()
     };
 
     fetchData();
-  }, []);
+  }, [dataContext,imageProfile,nameFunContext]);
   // ////////////////////////// add to Favoutite///////////////
   const[favItemFound,setFavItemFound]=useState(false)
   const handleAddToCart = async (item,id,e) => {
@@ -126,7 +126,7 @@ const{theme}=useTheme()
   };
 
   return (<>
-    <Carousal/>
+    <Carousal data={data}/>
     <section className={`articles ${theme === 'dark' ? 'dark-theme' : ''}`} >
     {/* {favItemFound ? <h1 style={{marginTop:"200px"}}>Item In Cart</h1>:<></>} */}
 
@@ -150,7 +150,7 @@ const{theme}=useTheme()
             <div className="h-bg-inner"></div>
           </div>
 
-          <a className="cart" href="#">
+          <a className="cart" >
             <span className="price">{item.price}$</span>
             <span className="add-to-cart">
             { user && !adminContext ? (<>

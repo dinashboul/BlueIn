@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, {  useState } from "react";
 import { Modal } from "react-bootstrap";
+import "./modal.css"
 function UpdateItem({ objOfItem, isOpen, closeModal }) {
   //  Get Item By id :
   console.log("itemid in update file", objOfItem)

@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import '/home/dinashboul/React_contextApi/myapp/src/componenets/Navbar/navbar.css'
+import './navbar.css'
 import { useAuth } from "../../contexts/AuthContext";
 import { useState } from "react";
 import { useLogin } from "../../contexts/LoginContext";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Sidebar from "../Crud-Process/Sidebar";
-import Fetching from "../Fetching";
-import axios from "axios";
-import Home from "../Home/Home";
-import{ useSearchData} from '/home/dinashboul/React_contextApi/myapp/src/contexts/SearchContext.js'
+import{ useSearchData} from '../../contexts/SearchContext'
 import { useTheme } from "../../contexts/ThemeContext";
 const Navbar = () => {
   const { user } = useAuth()
@@ -21,12 +18,12 @@ const Navbar = () => {
   const { removeEmail, removeAdmin } = useLogin()
   const { adminContext } = useLogin()
   const{dataContext}=useLogin()
-  const {nameContext,removeName}=useLogin()
+  const {removeName}=useLogin()
   console.log("navbar email is ->",dataContext)
   // Search //////////////////
   const {SearchDataFun}=useSearchData()
   const [searchQuery, setSearchQuery] = useState('');
-   
+  const {nameContext}=useLogin()
   const handleSearch=(e)=>{
     if (e.keyCode === 13){
     console.log("search--> ",searchQuery)
@@ -53,7 +50,7 @@ const Navbar = () => {
     <div className='navbar'
      style={{top:"0",backgroundColor:theme === 'dark' ? '#514e4e' : ''}}>
      <div className="links">
-          <ul className="list " aria-label="Primary" role="list">
+          <ul className="list " aria-label="Primary" >
         
         <li style={{marginRight:"3em", marginLeft: '8%'}}>
           <div style={{display:"flex",gap:"10px"}}>
@@ -76,10 +73,11 @@ const Navbar = () => {
         {user ? ( 
               <li><div className="buttonclass">
               <Link to="/usercart"> Profile</Link>
-              {/* <Link to="/usercart" style ={{color:"#007bff",fontSize:"1.5rem"}}>Welcome 🖐{nameContext}</Link> */}
+              <Link to="/usercart" style ={{color:"#007bff",fontSize:"1.5rem"}}>Welcome 🖐{nameContext}</Link>
               <img className="profile-image" 
                src={imageContext} alt=""/>
-                <button onClick={LogOut} className="logout-button">Logout</button>
+                <button onClick={LogOut} className="logout-button"
+                style={{width:"200px"}}>Logout</button>
               </div>
               </li>
         ):(<>

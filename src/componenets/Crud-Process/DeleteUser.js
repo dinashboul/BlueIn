@@ -1,6 +1,5 @@
 import React from 'react'
-import '/home/dinashboul/React_contextApi/myapp/src/componenets/Crud-Process/delete.css'
-import '/home/dinashboul/React_contextApi/myapp/src/componenets/Crud-Process/delete.css';
+import './delete.css'
 import axios from 'axios';
 import Fetching from '../Fetching';
 

@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import "/home/dinashboul/React_contextApi/myapp/src/componenets/SignUp/signup.css"
+import "./signup.css"
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useLogin } from '../../contexts/LoginContext';
-import { useTheme } from '../../contexts/ThemeContext';
 
 function SignUp() {
   
   //     // //////////////////////////////////////////////
-  const {theme}=useTheme()
   const history=useHistory()
   const [name,setName]=useState("");
   const [password,setPassword]=useState("");
   const [email,setEmail]=useState("");
-  const [image_url,setImage]=useState("https://th.bing.com/th/id/R.888e074ed492c906bbcb7dd8085b91a0?rik=SrKCZaObq08f3Q&pid=ImgRaw&r=0&sres=1&sresct=1")
+  const image_url="https://th.bing.com/th/id/R.888e074ed492c906bbcb7dd8085b91a0?rik=SrKCZaObq08f3Q&pid=ImgRaw&r=0&sres=1&sresct=1"
   const [register,setRegister]=useState(false)
   const {adminContext}=useLogin()
   const handleSubmit=(e)=>{
