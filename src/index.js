@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { AuthProvider } from '/home/dinashboul/React_contextApi/myapp/src/contexts/AuthContext.js';
+import { AuthProvider } from '/home/dinashboul/React_contextApi/myapp/src/AuthContext.js';
 import { LoginProvider } from './contexts/LoginContext';
 import { SearchProvider } from './contexts/SearchContext';
 import { ThemeProvider } from './contexts/ThemeContext';

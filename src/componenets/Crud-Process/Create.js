@@ -11,7 +11,7 @@ function Create() {
   const [name, setName] = useState("")
   const [description, setDescript] = useState("")
   const [imageUrl, setImageUrl] = useState('')
-  const [price, setPrice] = useState(null)
+  const [price, setPrice] = useState('')
 
   const [categories, setcategories] = useState([])
   
