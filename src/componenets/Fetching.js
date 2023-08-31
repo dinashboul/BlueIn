@@ -27,7 +27,7 @@ const  Fetching = (url) =>{
     )};
    fetch()
             
-     },[url]);
+     },);
   return {data}
 }
 export default Fetching

@@ -29,8 +29,8 @@ function CategoriesPage({ category }) {
                                     <div className="h-bg">
                                         <div className="h-bg-inner"></div>
                                     </div>
-                                    <a className="cart" href="#">
-                                    <span className="price"> Price :{item.price}$</span></a>
+                                    <p className="cart" >
+                                    <span className="price"> Price :{item.price}$</span></p>
                                 </div>
                             </div>
                         </div>

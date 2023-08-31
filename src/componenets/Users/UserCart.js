@@ -42,7 +42,7 @@ useEffect(()=>{
     }
 )};
       fetch();
-},[dataContext.email,userId]);
+},);
 
 // //////////////////
 
@@ -169,11 +169,11 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
           src={data.image_url} alt='' />
         <h2 style={{color:"blue"}}>{data.full_name}</h2>
         <ul><li>
-          <a
+          <p
             
             onClick={openModal}
             style={{color:'blue',fontSize:"1rem",backgroundColor:"none",top:"0"}}
-          >Edit</a>
+          >Edit</p>
           </li></ul>
           
         { isModalOpen && <Model 

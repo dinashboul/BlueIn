@@ -150,7 +150,7 @@ const{theme}=useTheme()
             <div className="h-bg-inner"></div>
           </div>
 
-          <a className="cart" >
+          <p className="cart" >
             <span className="price">{item.price}$</span>
             <span className="add-to-cart">
             { user && !adminContext ? (<>
@@ -176,7 +176,7 @@ const{theme}=useTheme()
               (<></>)}
 
             </span>
-          </a>
+          </p>
         </div>
       </div>
     </div>
