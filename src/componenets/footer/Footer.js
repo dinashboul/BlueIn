@@ -1,6 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "/home/dinashboul/React_contextApi/myapp/src/componenets/footer/footer.css"
+import "./footer.css"
 
 function Footer() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link,useLocation } from 'react-router-dom/cjs/react-router-dom.min'
-import "/home/dinashboul/React_contextApi/myapp/src/categories/categories.css"
+import "./categories.css"
 function Categories() {
   const location = useLocation();
   

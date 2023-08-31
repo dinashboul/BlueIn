@@ -1,6 +1,6 @@
 import React from 'react'
 import Fetching from '../componenets/Fetching';
-import "/home/dinashboul/React_contextApi/myapp/src/componenets/Home/homestyle.css"
+import "../componenets/Home/homestyle.css"
 
 function CategoriesPage({ category }) {
     const { data } = Fetching("https://store-wbly.onrender.com/items")
