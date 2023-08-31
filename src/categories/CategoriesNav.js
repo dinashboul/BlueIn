@@ -1,12 +1,9 @@
 import React from 'react'
-import { Link, Router,useLocation } from 'react-router-dom/cjs/react-router-dom.min'
+import { Link,useLocation } from 'react-router-dom/cjs/react-router-dom.min'
 import "/home/dinashboul/React_contextApi/myapp/src/categories/categories.css"
-import { Route } from 'react-router-dom/cjs/react-router-dom.min'
-import CategoriesPage from './CategoriesPage'
-import {useTheme} from  '/home/dinashboul/React_contextApi/myapp/src/contexts/ThemeContext.js'
 function Categories() {
   const location = useLocation();
-  const{theme}=useTheme()
+  
   return (
   
     <section className="categorie-container"

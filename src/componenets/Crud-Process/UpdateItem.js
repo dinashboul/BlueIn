@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Modal } from "react-bootstrap";
 function UpdateItem({ objOfItem, isOpen, closeModal }) {
   //  Get Item By id :
@@ -8,7 +8,7 @@ function UpdateItem({ objOfItem, isOpen, closeModal }) {
   const [description, setDescription] = useState(objOfItem.description)
   const [image_url, setImageUrl] = useState(objOfItem.image_url)
   const [price, setPrice] = useState(objOfItem.price)
-  const [inputValue, setInputValue] = useState('');
+  const inputValue ="";
   const url = `https://store-wbly.onrender.com/items/${objOfItem.item_id}`
   console.log(url)
   const [categories, setcategories] = useState(objOfItem.categories)

@@ -17,10 +17,8 @@ function LoginForm() {
 
   const { loginAuth } = useAuth();
   const { user } = useAuth()
-  const { logoutAuth } = useAuth()
   const [token, setToken] = useState('')
 
-  const [adminCase,setAdminCase]=useState(null)
 
   const submittHandler = async (e) => {
     e.preventDefault();
@@ -50,7 +48,6 @@ function LoginForm() {
           loginAuth(token)
 
           console.log("isAdmin ->",result.data.isAdmin)
-          setAdminCase(result.data.isAdmin)
           result.data.isAdmin && adminPages(result.data.isAdmin)
           setEmail("")
           setPassword("")
