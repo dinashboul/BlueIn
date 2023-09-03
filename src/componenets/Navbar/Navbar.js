@@ -81,7 +81,8 @@ const Navbar = () => {
               <li style={{ width: "200px", marginRight: "8%" }}><button onClick={LogOut} className="logout-button">Logout</button></li>
             </div>
 
-          ) : (<div className="buttonclass">
+          ) : (<div  style={{marginRight: "8%",display:"flex",justifyContent:"space-around",
+          gap:"30px",alignItems:"center",right:"0",position:"absolute",top:"40px"}}>
             <li><Link to="/login"> Login </Link></li>
             <li><Link to="/signup"> SignUP </Link></li>
           </div>)}

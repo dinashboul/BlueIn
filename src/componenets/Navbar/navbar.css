@@ -37,7 +37,7 @@ align-items: center;
   flex: 1;
   display: flex;
   justify-content:space-around ;
-   gap: 70px;
+  gap: 70px;
  position: absolute;
  right: 0;
   
@@ -69,9 +69,9 @@ a:hover {
   margin-right:"8%";
   width: "20px";
   margin-top:0;
-   color: "white";
-   font-size:"1em";
-   border-radius:30px;
-   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+  color: "white";
+  font-size:"1em";
+  border-radius:30px;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
