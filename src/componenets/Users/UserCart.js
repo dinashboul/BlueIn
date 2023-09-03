@@ -168,7 +168,7 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
   style={{
     display:'flex',flexWrap:"nowrap",
   position:'relative',marginLeft:"40%",width:"100%"}}>
-    <div className="image-area" style={{position:'absolute',top:"30%",left:"40%"}} >
+    <div className="image-area" style={{position:'absolute',top:"30%",left:"30%"}} >
       <div className="img-wrapper" key={data.user_id}>
         <img
           src={data.image_url} alt='' 
