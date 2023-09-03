@@ -52,7 +52,8 @@ function UpdateItem({ objOfItem, isOpen, closeModal }) {
           
         </div>
         {/* ////////// form //////// */}
-        <form action="#"    onSubmit={(e) => handleUpdateItem} >
+        <form action="#" style={{height:"700px"}}
+            onSubmit={(e) => handleUpdateItem} >
           <ul className="noBullet">
             <li> <h2
               style={{ color: "blue", fontWeight: "bold", fontSize: "2rem", paddingTop: "10px" }}>
@@ -108,11 +109,16 @@ function UpdateItem({ objOfItem, isOpen, closeModal }) {
               />
             </li>
 
-            <li id="center-btn" >
+            <li >
+              <div style={{gap: "10px",position:"relative"}}>
               <button type="submit" id="join-btn" name="join" alt="Join" value="Join"
+                 style={{position:"absolute",left:"0",width:"200px"}}
                 onClick={handleUpdateItem}
               >Submit</button>
-              <button id="join-btn" onClick={closeModal}>Close</button>
+              <button id="join-btn" 
+              style={{position:"absolute",right:"0",left:"40%",width:"200px"}}
+              onClick={closeModal}>Close</button>
+              </div>
             </li>
           </ul>
         </form>

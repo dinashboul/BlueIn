@@ -161,7 +161,7 @@ const{theme}=useTheme()
                 }
                 
             {adminContext ?
-              (<span className="txt" style={{display:"flex",justifyContent:"space-arround",gap:"10px"}}>
+              (<span className="txt" style={{display:"flex",justifyContent:"space-arround",gap:"30px"}}>
               <span style={{backgroundColor:"#ADC4CE",color:"black"}}
               onClick={(e)=>handleDeleteItem(item.item_id,e)}
               >Delete Item</span>

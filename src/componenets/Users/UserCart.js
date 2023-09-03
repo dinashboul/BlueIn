@@ -167,8 +167,8 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
   <div className='div-container'
   style={{
     display:'flex',flexWrap:"nowrap",
-  position:'relative',marginLeft:"30%",width:"100%"}}>
-    <div className="image-area" style={{position:'absolute',top:"30%",marginLeft:"25%"}} >
+  position:'relative',marginLeft:"40%",width:"100%"}}>
+    <div className="image-area" style={{position:'absolute',top:"30%",left:"40%"}} >
       <div className="img-wrapper" key={data.user_id}>
         <img
           src={data.image_url} alt='' 
@@ -193,7 +193,7 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
           />}
       </div>
     </div>
-    <span style={{position:'absolute',bottom:"40%",
+    <span style={{position:'absolute',bottom:"40%",left:"0",
     color:'blue',fontSize:"1.3rem",fontWeight:"bold"}}>
       <button  onClick={handleDamege}
       style={{width:"300px"}}

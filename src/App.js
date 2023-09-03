@@ -22,11 +22,9 @@ function App() {
   return(
    
   <div className='App' style={{backgroundColor:theme==='dark'?' #514e4e':''}}>
-    <Router>
-        <div className={`App ${theme === 'dark' ? 'dark-theme' : ''}`} >
+    <Router>  
           <Navbar />
           <CategoriesNav/>
-          <div className='content'>
             <Switch>
               <Route exact path='/'>
                 <Home />
@@ -57,9 +55,9 @@ function App() {
               </Route>
               
             </Switch>
-          </div>
+         
           {/* <Footer/> */}
-        </div>
+       
       </Router>
 
   </div>

@@ -18,13 +18,13 @@ function Sidebar() {
     }}
 >
     <SideNav.Toggle />
-    <SideNav.Nav style={{}} defaultSelected="home">
+    <SideNav.Nav  defaultSelected="home">
         <NavItem eventKey="home">
         <NavIcon>
                 <i style ={{fontSize:"2rem",fontweight:"bold"}} />
             </NavIcon>
             <NavText>
-                <h1 style={{color:"blue",fontSize:"1.5rem",left:"30%",fontWeight:"bold"}} >Users</h1>
+                <h1 style={{color:"blue",fontSize:"1.5rem",left:"30%",fontWeight:"bold",marginBottom:"20px"}} >Users</h1>
             </NavText>
             <NavItem eventKey="charts/linechart">
                 <NavText>

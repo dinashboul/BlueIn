@@ -23,7 +23,7 @@ function Carousal() {
         width:"100%"
       }
       return (
-        <div className={`App ${theme === 'dark' ? 'dark-theme' : ''}`}>
+        <div style={{backgroundColor:theme === 'dark' ? '#514e4e' : ''}}>
           <div style={{marginBottom:"50px",alignItems:"center"}}>
             <div style={{
               padding: "0 20px"
