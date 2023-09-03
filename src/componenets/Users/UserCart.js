@@ -6,12 +6,12 @@ import Model from './Model';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLogin } from '../../contexts/LoginContext';
 import Fetching from '../Fetching';
-
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 const UserCart = () => {
   const{imageProfile}=useLogin()
   const {dataContext}=useLogin()
   console.log("the data context is",dataContext)
-
+  const history=useHistory()
   // console.log("the email of user is ",email)
 const [isUpdate, setIsUpdate] = useState(false)
 // const apiId=`https://store-wbly.onrender.com/user/${user_id}`
@@ -42,7 +42,7 @@ useEffect(()=>{
     }
 )};
       fetch();
-},);
+},[]);
 
 // //////////////////
 
@@ -75,6 +75,7 @@ useEffect(()=>{
   const {removeImage}=useLogin()
 
   const imgCard =data.image_url && data.image_url;
+  console.log(data.image_url)
   const [image_url, setImageUrl] = useState(imgCard);
 
   const update = async (e) => {
@@ -112,7 +113,7 @@ useEffect(()=>{
     setIsModalOpen(false);
     imageProfile(image_url)
     console.log("model is closed",isModalOpen)
-    window.location.reload(true)
+    history.push('/usercart')
   };
 
 
@@ -168,9 +169,9 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
         <img
           src={data.image_url} alt='' />
         <h2 style={{color:"blue"}}>{data.full_name}</h2>
-        <ul><li>
+        <ul>
+          <li>
           <p
-            
             onClick={openModal}
             style={{color:'blue',fontSize:"1rem",backgroundColor:"none",top:"0"}}
           >Edit</p>

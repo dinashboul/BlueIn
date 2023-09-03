@@ -24,7 +24,7 @@ function SignUp() {
       method:"post",
       url:"https://store-wbly.onrender.com/users",
       data:{
-        name,
+        full_name:name,
         email,
         password,
         image_url

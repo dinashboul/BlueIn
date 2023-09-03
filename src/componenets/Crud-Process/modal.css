@@ -37,4 +37,15 @@
     border-radius: 5px;
     cursor: pointer;
   }
-  
+   
+  input {
+    width:"250px";
+  }
+
+  select{
+    width:"250px";
+  }
+
+  form{    
+background-color:#0e1a71; 
+ }

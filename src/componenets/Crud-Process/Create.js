@@ -11,7 +11,7 @@ function Create() {
   const [name, setName] = useState("")
   const [description, setDescript] = useState("")
   const [imageUrl, setImageUrl] = useState('')
-  const [price, setPrice] = useState('')
+  const [price, setPrice] = useState(0)
 
   const [categories, setcategories] = useState([])
   
@@ -52,10 +52,11 @@ function Create() {
 
 return (<>
   {adminContext ? (
-    <section style={{display:"grid",gridTemplateColumns:"repeat(3,fr)",marginLeft:"8%"}}>
-   <section  style={{marginTop:"8%",gridColumn:"1"}}> <Carousal /></section>
-  <div className="signupSection" style={{marginTop:"8%"}}>
-    <div className="info">
+    <section style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)"}}>
+   <section  style={{marginTop:"10%",gridColumn:"1",marginLeft:"20%"}}>
+   <Carousal /></section>
+  <div className="signupSection" style={{marginTop:"8%",gridColumn:"2"}}>
+    <div className="info" style={{marginLeft:"10px"}}>
       <h2 style={{ 
         color:"blue",
         fontWeight:"bold",
@@ -67,7 +68,8 @@ return (<>
       <p></p>
     </div>
     {/* ////////// form //////// */}
-    <form action="#"  className="signupForm" onSubmit={handleAdd} >
+    <form action="#"  style={{marginTop:"8%"}}
+    className="signupForm" onSubmit={handleAdd} >
       <ul className="noBullet">
         <li> <h2 
         style={{color:"blue",fontWeight:"bold",fontSize:"2rem",paddingTop:"10px"}}>

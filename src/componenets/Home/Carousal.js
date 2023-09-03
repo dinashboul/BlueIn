@@ -1,11 +1,11 @@
 import React from 'react'
 import { Carousel } from 'react-carousel-minimal';
 import './carousal.css'
-// import Fetching from '../Fetching';
+import Fetching from '../Fetching';
 import { useTheme } from '../../contexts/ThemeContext';
-function Carousal({data}) {
+function Carousal() {
   const {theme}=useTheme()
-    // const { data } = Fetching('https://store-wbly.onrender.com/items');
+    const { data } = Fetching('https://store-wbly.onrender.com/items');
     
       const carouselData = data ? data.map((item, index) => ({
         image: item.image_url,
@@ -24,13 +24,13 @@ function Carousal({data}) {
       }
       return (
         <div className={`App ${theme === 'dark' ? 'dark-theme' : ''}`}>
-          <div style={{ textAlign: "center",marginBottom:"150px"}}>
+          <div style={{marginBottom:"50px"}}>
             <div style={{
               padding: "0 20px"
             }}>
               <Carousel
                 data={carouselData}
-                time={800}
+                time={1000}
                 width="100%"
                 height="600px"
                 captionStyle={captionStyle}
@@ -46,10 +46,15 @@ function Carousal({data}) {
                 slideImageFit="cover"
                 thumbnails={false}
                 style={{
-                  textAlign: "center",
-                  Width: "10%",
-                  maxHeight: "500px",
-                  margin: "40px auto",
+                 
+                  width: "90%",
+                  maxHeight: "50%",
+                  marginBottom:"0px",
+                  marginTop: "40px ",
+                  marginLeft:"auto",
+                  marginRight:"auto",
+                  objectFit:"cover",
+                  overflow:"hidden"
                 }}
               />
             </div>

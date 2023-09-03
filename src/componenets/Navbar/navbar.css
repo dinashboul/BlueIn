@@ -35,7 +35,11 @@ align-items: center;
   flex: 1;
   display: flex;
   justify-content:space-around ;
- gap: 100px;
+   gap: 70px;
+  position:fixed;
+  right:0;
+  
+
 
 }
 
@@ -51,7 +55,7 @@ a {
   color: #007bff; /* Blue color for links */
   text-decoration: none; /* Remove default underline */
   transition: color 0.2s ease; /* Smooth color transition on hover */
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 a:hover {

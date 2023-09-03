@@ -2,11 +2,11 @@ import React from 'react'
 import './delete.css'
 import axios from 'axios';
 import Fetching from '../Fetching';
-
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 function DeleteUser() {
     const  { data } = Fetching('https://store-wbly.onrender.com/users');
     // Delete User/////////////////////////
-
+    const history=useHistory()
     const handleDelteUser=(e,user_id)=>{
       e.preventDefault();
       const configration={
@@ -17,8 +17,7 @@ function DeleteUser() {
       .then(()=>{
         console.log("the user id is",user_id)
         alert("User is Deleted")
-        window.location.reload(true)
-
+        history.push('/deleteuser')
       })
       .catch((err)=> console.log("correct delete"))
 

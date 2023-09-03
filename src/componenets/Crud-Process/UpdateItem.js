@@ -44,7 +44,7 @@ function UpdateItem({ objOfItem, isOpen, closeModal }) {
     <Modal 
       show={isOpen} onHide={closeModal} >
       <div className="signupSection" style={{ display: "flex", justifyContent: "center", alignItems: "center",
-       width:"200px",marginTop:'100%',height:"100px"}}>
+       width:"500px",marginTop:'100%',height:"100px"}}>
         <div className="info" style={{marginRight:"50px"}}>
           <img className="icon ion-ios-ionic-outline" 
           style={{width:"200px",height:"200px"}}
@@ -73,7 +73,7 @@ function UpdateItem({ objOfItem, isOpen, closeModal }) {
             </li>
             <li>
               <label htmlFor="inputField"></label>
-              <textarea type="textarea" style={{ marginLeft: "0px" }} className="inputFields" id="image" name="image" placeholder="ImageUrl"
+              <textarea type="textarea"  className="inputFields" id="image" name="image" placeholder="ImageUrl"
                 value={image_url}
                 onChange={(e) => setImageUrl(e.target.value)}
               />

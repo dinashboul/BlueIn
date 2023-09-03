@@ -126,7 +126,7 @@ const{theme}=useTheme()
   };
 
   return (<>
-    <Carousal data={data}/>
+    <Carousal />
     <section className={`articles ${theme === 'dark' ? 'dark-theme' : ''}`} >
     {/* {favItemFound ? <h1 style={{marginTop:"200px"}}>Item In Cart</h1>:<></>} */}
 
