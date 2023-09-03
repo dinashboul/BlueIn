@@ -7,7 +7,6 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Sidebar from "../Crud-Process/Sidebar";
 import { useSearchData } from '../../contexts/SearchContext'
 import { useTheme } from "../../contexts/ThemeContext";
-import Carousal from "../Home/Carousal";
 const Navbar = () => {
   const { user } = useAuth()
   const history = useHistory()
