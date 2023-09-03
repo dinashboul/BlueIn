@@ -193,7 +193,7 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
           />}
       </div>
     </div>
-    <span style={{position:'absolute',bottom:"40%",left:"0",
+    <span style={{position:'absolute',bottom:"40%",left:"0",marginTop:"50px",
     color:'blue',fontSize:"1.3rem",fontWeight:"bold"}}>
       <button  onClick={handleDamege}
       style={{width:"300px"}}
