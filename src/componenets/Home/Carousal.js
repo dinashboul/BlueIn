@@ -24,7 +24,7 @@ function Carousal() {
       }
       return (
         <div className={`App ${theme === 'dark' ? 'dark-theme' : ''}`}>
-          <div style={{marginBottom:"50px"}}>
+          <div style={{marginBottom:"50px",alignItems:"center"}}>
             <div style={{
               padding: "0 20px"
             }}>
@@ -32,7 +32,7 @@ function Carousal() {
                 data={carouselData}
                 time={1000}
                 width="100%"
-                height="600px"
+                height="400px"
                 captionStyle={captionStyle}
                 radius="10px"
                 slideNumber={false}
@@ -47,12 +47,12 @@ function Carousal() {
                 thumbnails={false}
                 style={{
                  
-                  width: "90%",
+                  width: "60%",
                   maxHeight: "50%",
                   marginBottom:"0px",
                   marginTop: "40px ",
-                  marginLeft:"auto",
                   marginRight:"auto",
+                  marginLeft:"auto",
                   objectFit:"cover",
                   overflow:"hidden"
                 }}

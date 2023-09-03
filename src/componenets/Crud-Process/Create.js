@@ -13,13 +13,14 @@ function Create() {
   const [imageUrl, setImageUrl] = useState('')
   const [price, setPrice] = useState(0)
 
-  const [categories, setcategories] = useState([])
+  const [categories, setCategories] = useState([])
   
   const{adminContext}=useLogin()
 
-  const handleCategoryChange = (option,e) => {
-    const selectedOptions = [...categories,option]
-    setcategories(selectedOptions);
+  
+  const handleCategoryChange = (e) => {
+    const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
+    setCategories(selectedOptions);
   };
  
   const handleAdd= async(e) =>{
@@ -52,27 +53,16 @@ function Create() {
 
 return (<>
   {adminContext ? (
-    <section style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)"}}>
-   <section  style={{marginTop:"10%",gridColumn:"1",marginLeft:"20%"}}>
-   <Carousal /></section>
-  <div className="signupSection" style={{marginTop:"8%",gridColumn:"2"}}>
-    <div className="info" style={{marginLeft:"10px"}}>
-      <h2 style={{ 
-        color:"blue",
-        fontWeight:"bold",
-        fontSize:"2rem",
-        margin:"15px"
-      }}
-      >BlueIn</h2>
-      <img className="icon ion-ios-ionic-outline" aria-hidden="true" alt="" src="https://png.pngtree.com/template/20200316/ourmid/pngtree-bird-blue-logo-template-image_354657.jpg" />
-      <p></p>
-    </div>
+    <section  className='creat-container' >
+   
+   <Carousal />
+    
     {/* ////////// form //////// */}
-    <form action="#"  style={{marginTop:"8%"}}
+    <form action="#" 
     className="signupForm" onSubmit={handleAdd} >
       <ul className="noBullet">
         <li> <h2 
-        style={{color:"blue",fontWeight:"bold",fontSize:"2rem",paddingTop:"10px"}}>
+        style={{color:"blue",fontWeight:"bold",fontSize:"2rem",paddingTop:"10px",position:"absolute",left:"30%",top:"5%"}}>
           Add New Item</h2></li>
         <li>
           <label htmlFor="inputField"></label>
@@ -105,7 +95,7 @@ return (<>
         name="categories"
         multiple
         value={categories}
-        onChange={(e)=>handleCategoryChange(e.target.value)}
+        onChange={handleCategoryChange}
       >
         <option disabled>Category</option>
         <option value="women">Women</option>
@@ -131,9 +121,8 @@ return (<>
         </li>
       </ul>
     </form>
-  </div>
   </section>
-  ):(<h1 style={{top:"50%",left:"40%",color:"blue", fontSize:"2rem"}} > This Page is sepcified to Admin</h1>)}</>
+  ):(<></>)}</>
   
 )
 }

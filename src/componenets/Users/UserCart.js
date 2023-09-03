@@ -164,10 +164,15 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
 }
   return (<section>
   {user?(<>
-    <div className="image-area" >
+  <div className='div-container'
+  style={{
+    display:'flex',flexWrap:"nowrap",
+  position:'relative',marginLeft:"30%",width:"100%"}}>
+    <div className="image-area" style={{position:'absolute',top:"30%",marginLeft:"25%"}} >
       <div className="img-wrapper" key={data.user_id}>
         <img
-          src={data.image_url} alt='' />
+          src={data.image_url} alt='' 
+          />
         <h2 style={{color:"blue"}}>{data.full_name}</h2>
         <ul>
           <li>
@@ -188,13 +193,15 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
           />}
       </div>
     </div>
-{/* // ////////////////////// Favorite item /////////////////////////// */}
-<span style={{marginTop:"30%",display:"grid",gridTemplateColumns: "auto auto",marginLeft:"85%",
-justifyContent:"center",alignItems: "center",columnGap: "10px",color:'blue',fontSize:"1.3rem",fontWeight:"bold"}}>
+    <span style={{position:'absolute',bottom:"40%",
+    color:'blue',fontSize:"1.3rem",fontWeight:"bold"}}>
       <button  onClick={handleDamege}
-      style={{marginTop:"50%",width:"300px"}}
+      style={{width:"300px"}}
       >Refresh your items</button>
  </span>
+ </div>
+{/* // ////////////////////// Favorite item /////////////////////////// */}
+
 <section className="articles" style={{marginTop:"3%",marginLeft:'50%',marginRight:"40px"}}>
   
   {data.favorite&&data.favorite.map((item)=>

@@ -16,6 +16,7 @@ import UpdateItem from './componenets/Crud-Process/UpdateItem';
 import CategoriesNav from './categories/CategoriesNav';
 import CategoriesPage from './categories/CategoriesPage';
 import { useTheme } from './contexts/ThemeContext';
+import "./index.css"
 function App() {
   const {theme}=useTheme()
   return(

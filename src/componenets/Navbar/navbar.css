@@ -7,11 +7,13 @@
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
   box-sizing: border-box;
   background: #ecf0f3;
+  position: relative;
 }
 
 .logo-section {
   flex: 1;
   margin-left: 8%;
+ 
 }
 
 .links {
@@ -36,8 +38,8 @@ align-items: center;
   display: flex;
   justify-content:space-around ;
    gap: 70px;
-  position:fixed;
-  right:0;
+ position: absolute;
+ right: 0;
   
 
 

@@ -23,14 +23,11 @@ html,
 body{
   min-height: 100vh;
   /* background-color: #514e4e; */
-
-}
-
-.App{
   background-color:aliceblue;
-  /* background-image: url(https://img.freepik.com/free-photo/abstract-surface-textures-white-concrete-stone-wall_74190-8189.jpg?w=900&t=st=1693388187~exp=1693388787~hmac=947ac9cd57a9b789b0312205fd4e1aeea49708985641114fe3878ec181442eb6); */
+
 
 }
- .dark-theme{
+
+  /* .dark-theme{
   background-color: #514e4e;
- }
+ } */
