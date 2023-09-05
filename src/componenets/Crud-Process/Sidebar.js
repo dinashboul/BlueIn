@@ -37,13 +37,13 @@ function Sidebar() {
                 </NavText>
             </NavItem>
         </NavItem>
+
         <NavItem eventKey="charts" >
             <NavIcon>
-                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '2rem' }} />
+                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1rem' }} />
             </NavIcon>
             <NavText >
             <h1 style={{color:"blue",fontSize:"1.5rem",left:"30%",fontWeight:"bold"}} >Items</h1>
- 
             </NavText>
             <NavItem eventKey="charts/linechart">
                 <NavText>

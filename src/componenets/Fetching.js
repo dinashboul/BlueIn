@@ -10,7 +10,7 @@ const Fetching = (url) => {
     const fetchData = async () => {
       try {
         const result = await axios.get(url)
-        
+        console.log("Get data is Done")
         dataRef.current = await result.data;
         setIsLoading(false);
       } catch (error) {

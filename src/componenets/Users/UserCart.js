@@ -172,7 +172,7 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
           <li>
           <p
             onClick={openModal}
-            style={{color:'blue',fontSize:"1rem",backgroundColor:"none",top:"0"}}
+            style={{color:'blue',fontSize:"1rem",backgroundColor:"none",top:"0",cursor:"pointer"}}
           >Edit</p>
           </li></ul>
           

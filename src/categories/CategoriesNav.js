@@ -30,32 +30,32 @@ function Categories() {
       <SideNav.Nav defaultSelected="home" >
         {adminContext ? (
           <>
-            <NavItem eventKey="home">
-              <NavIcon>
-                <i style={{ fontSize: "2rem", fontweight: "bold" }} />
+            <NavItem eventKey="charts" >
+              <NavIcon >
+                <i style={{ fontSize: "1rem", fontweight: "bold" }} />
+                <h1 style={{ color: "blue", fontSize: "1.5rem", fontWeight: "bold", marginBottom: "20px" }} >Users</h1>
               </NavIcon>
-              <NavText>
-                <h1 style={{ color: "blue", fontSize: "1.5rem", left: "30%", fontWeight: "bold", marginBottom: "20px" }} >Users</h1>
-              </NavText>
-              <NavItem eventKey="charts/linechart">
-                <NavText>
+              
+              <NavItem >
+                <NavText eventKey="charts/linechart">
                   <Link to="/signup"> Add New User </Link>
                 </NavText>
               </NavItem>
+
               <NavItem eventKey="charts/barchart">
                 <NavText>
                   <Link to="/deleteuser">Delete User</Link>
                 </NavText>
               </NavItem>
+
             </NavItem>
             <NavItem eventKey="charts" >
               <NavIcon>
                 <i className="fa fa-fw fa-line-chart" style={{ fontSize: '2rem' }} />
-              </NavIcon>
-              <NavText >
-                <h1 style={{ color: "blue", fontSize: "1.5rem", left: "30%", fontWeight: "bold" }} >Items</h1>
+                <h1 style={{ color: "blue", fontSize: "1.5rem", fontWeight: "bold" }} >Items</h1>
 
-              </NavText>
+              </NavIcon>
+             
               <NavItem eventKey="charts/linechart">
                 <NavText>
                   <Link to="/create"> Add New Item </Link>
@@ -77,6 +77,7 @@ function Categories() {
                 style={{ color: "blue", fontSize: "1.7rem", fontWeight: "bold", marginBottom: "30px" }}
               >Categories</h1>
             </NavText></NavItem>)}
+    
          <NavItem eventKey="home" >
       <NavIcon>
           <i style={{ fontSize: "2rem", fontweight: "bold" }} />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './homestyle.css'
 import axios from 'axios'
-import Fetching from '../Fetching'
+// import Fetching from '../Fetching'
 import { useAuth } from '../../contexts/AuthContext'
 import { useLogin } from '../../contexts/LoginContext'
 import DeleteItem from '../Crud-Process/DeleteItem'
@@ -10,6 +10,7 @@ import Carousal from './Carousal'
 import { useSearchData } from '../../contexts/SearchContext'
 import { useTheme } from '../../contexts/ThemeContext'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import UseFetch from '../UseFetch'
 function Home() {
 const{theme}=useTheme()
   const history=useHistory()
@@ -20,9 +21,7 @@ const{theme}=useTheme()
   const [userId, setUserId] = useState(null)
   const {searchData}=useSearchData()  
   const {nameFunContext}=useLogin()
-  const {data}  = searchData == null ?
-  Fetching('https://store-wbly.onrender.com/items'):
-  Fetching(searchData)
+  const { data } = searchData == null ? UseFetch('https://store-wbly.onrender.com/items') : UseFetch(searchData);
   const [favorite, setFavItem] = useState([])
 
   // ////////////// User Info ////////////////////////

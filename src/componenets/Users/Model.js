@@ -11,8 +11,9 @@ function Model({ isOpen, closeModal,image_url1,setImageUrl1,update,isUpdate,isMo
 
   const message={
     width: "500px",
+    height:"auto",
     padding: "20px",
-    fontSize:"1.8rem",
+    fontSize:"1.5rem",
     borderRadius: "10px",
     boxShadow:" 0px 4px 6px rgba(0, 0, 0, 0.1)", 
     backgroundColor:" #ecf0f3",
