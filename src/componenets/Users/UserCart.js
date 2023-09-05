@@ -10,7 +10,6 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 const UserCart = () => {
   const{imageProfile}=useLogin()
   const {dataContext}=useLogin()
-  console.log("the data context is",dataContext)
   const history=useHistory()
   // console.log("the email of user is ",email)
 const [isUpdate, setIsUpdate] = useState(false)
@@ -23,15 +22,11 @@ useEffect(()=>{
   const fetch=async()=>{
       const configuration={
           method:"Get",
-          url:`https://store-wbly.onrender.com/userbyemail/${dataContext.email}`,
-          data:{
-              data
-          }
-  
+          url:`https://store-wbly.onrender.com/userbyemail/${dataContext}`
         }
         await axios(configuration)
         .then((result)=>
-        { console.log("Get data is good")
+        { 
           setdata(result.data)
           setUserId(result.data.user_id)
           console.log("the user id is",userId)
@@ -42,7 +37,7 @@ useEffect(()=>{
     }
 )};
       fetch();
-},[data,dataContext,userId]);
+},[dataContext,userId]);
 
 // //////////////////
 
@@ -75,7 +70,7 @@ useEffect(()=>{
   const {removeImage}=useLogin()
 
   const imgCard =data.image_url && data.image_url;
-  console.log(data.image_url)
+  // console.log(data.image_url)
   const [image_url, setImageUrl] = useState(imgCard);
 
   const update = async (e) => {
@@ -123,7 +118,6 @@ useEffect(()=>{
 
 //  Delete items from fav //////////////////
 const  dataItems =Fetching("https://store-wbly.onrender.com/items")
-
 const handleDamege = (e) => {
   e.preventDefault()
   const databaseItemIds = new Set(dataItems.data.map(item => item.item_id));

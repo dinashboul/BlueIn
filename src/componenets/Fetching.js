@@ -1,33 +1,39 @@
-import  { useEffect, useState } from 'react'
-import axios from 'axios'
- 
+import { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
 
-const  Fetching = (url) =>{  
-    const [data,setdata]=useState(null)
-    useEffect(()=>{
-        const fetch=async()=>{
-            const configuration={
-                method:"GET",
-                url:url,
-                data:{
-                    data
-                }
+const Fetching = (url) => {
+  const dataRef = useRef(null);
+  const [messError, setMessError] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios.get(url)
         
-              }
-              await axios(configuration)
-              .then((result)=>
-              { console.log("Get data is good")
-                setdata(result.data)
-              })
-              .catch((err)=>
-              {err=new Error()
-                alert(" No Matching Items")
-            console.log("no data")
-          }
-    )};
-   fetch()
-            
-     },[url,data]);
-  return {data}
-}
-export default Fetching
+        dataRef.current = await result.data;
+        setIsLoading(false);
+      } catch (error) {
+        setMessError('No Matching Items');
+      }
+    };
+
+    setTimeout(async () => {
+      try {
+        await fetchData();
+        setIsLoading(false)
+      } catch (err) {
+        console.error('Error fetching data:', err);
+      }
+    }, 2000);
+    
+  }, [url]);
+
+  return {
+    data: dataRef.current,
+    isLoading,
+    error: messError,
+  };
+};
+
+export default Fetching;

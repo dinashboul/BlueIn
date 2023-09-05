@@ -52,21 +52,21 @@ const Navbar = () => {
       <div className="links">
         <ul className="list " aria-label="Primary" style={{ marginTop: "10px" }} >
           <div style={{ marginLeft: '20%', display: "flex", justifyContent: "space-around", gap: "70px" }}>
-          <div style={{ display: "flex", justifyContent: "space-around", gap: "2px" }}>
-            <li style={{ top: "1" }}><img to="#" onClick={toggleTheme}
-              style={{ width: "50px", height: "50px" }}
-              alt="" src="https://png.pngtree.com/template/20200316/ourmid/pngtree-bird-blue-logo-template-image_354657.jpg"
-            />
-            </li>
-            <li style={{ marginTop: "0", display: "flex", alignItems: "center" }}> 
-            <p style={{ fontSize: "1.5rem", fontWeight: "bold", color: "#007bff" }}> BlueIn</p> 
-            </li>
+            <div style={{ display: "flex", justifyContent: "space-around", gap: "2px" }}>
+              <li style={{ top: "1" }}><img to="#" onClick={toggleTheme}
+                style={{ width: "50px", height: "50px" }}
+                alt="" src="https://png.pngtree.com/template/20200316/ourmid/pngtree-bird-blue-logo-template-image_354657.jpg"
+              />
+              </li>
+              <li style={{ marginTop: "0", display: "flex", alignItems: "center" }}>
+                <Link to="/" style={{ fontSize: "1.5rem", fontWeight: "bold", color: "#007bff" }}> BlueIn</Link>
+              </li>
             </div>
             <li>  <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
-
+              style={{ width: "200px", textAlign: "center", fontSize: "1rem" }}
               onKeyDown={handleSearch}
               placeholder="Search..." /></li>
-            <li style={{ display: "flex", alignItems: "center" }}><Link to="/"> Home</Link> </li>
+
           </div>
           {adminContext ? (
             <Sidebar />
@@ -74,15 +74,22 @@ const Navbar = () => {
 
 
           {user ? (
-            <div className="buttonclass">
-              <li><Link to="/usercart" style={{ color: "#007bff", fontSize: "1rem" }}>Welcome 🖐{nameContext}</Link></li>
-              <li><Link to="/usercart"> <img className="profile-image"
-                src={imageContext} alt="" /></Link></li>
-              <li style={{ width: "200px", marginRight: "8%" }}><button onClick={LogOut} className="logout-button">Logout</button></li>
+            <div className="buttonclass" style={{ disple: "flex", alignItems: "space-around", gap: "30px" }}>
+
+
+              <Link to="/usercart"> <img className="profile-image"
+                src={imageContext} alt="" /></Link>
+              <Link to="/usercart" style={{ color: "#007bff", fontSize: "1rem" }}>{nameContext}</Link>
+
+              <button onClick={LogOut} className="logout-button"
+                style={{ width: "100px", height: "50px" ,marginRight:"8%",textAlign:"center"}}
+              >Logout</button>
             </div>
 
-          ) : (<div  style={{marginRight: "8%",display:"flex",justifyContent:"space-around",
-          gap:"30px",alignItems:"center",right:"0",position:"absolute",top:"40px"}}>
+          ) : (<div style={{
+            marginRight: "8%", display: "flex", justifyContent: "space-around",
+            gap: "30px", alignItems: "center", right: "0", position: "absolute", top: "40px"
+          }}>
             <li><Link to="/login"> Login </Link></li>
             <li><Link to="/signup"> SignUP </Link></li>
           </div>)}

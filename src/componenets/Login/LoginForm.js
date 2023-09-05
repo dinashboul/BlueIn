@@ -18,14 +18,11 @@ function LoginForm() {
   const { loginAuth } = useAuth();
   const { user } = useAuth()
   const [token, setToken] = useState('')
-
+  const[mess,setMess]=useState("")
 
   const submittHandler = async (e) => {
     e.preventDefault();
-    if (email === "" || password === "") {
-      alert("Please fill You Information")
-    } 
-  else if (!email) {
+   if (!email) {
     console.log("Email is null or undefined");
   } 
     else  {
@@ -54,7 +51,9 @@ function LoginForm() {
           history.push('/')
 
         })
-        .catch((err) =>console.log(err))
+        .catch((err) =>{console.log(err)
+        setMess("Email OR pass is Incorrect")}
+        )
     }
     
 
@@ -63,23 +62,29 @@ function LoginForm() {
 
   return (<>
 
-    {!user ? (<section style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+    {!user ? (<section style={{ display: "flex", justifyContent: "center", alignItems: "start",marginTop:"200px" }}>
       <div className='center' >
         <form className='container-login' 
        
         onSubmit={(e) => submittHandler(e)}>
+          <p style={{marginBottom:"20px",fontSize:"1rem",color:"blue",fontWeight:"bold"}}>{mess}</p>
           <div className='inputs'>
             <h2 className='brand-title'>Login</h2>
             <div className="form-outline mb-4">
               <label className="inputs" htmlFor="form1Example1">Email </label>
-              <input type="email" id="email" className="form-control" onChange={e => setEmail(e.target.value)} value={email} />
+              <input type="email" id="email" className="form-control" 
+              onChange={e => setEmail(e.target.value)} value={email} 
+              required/>
             </div>
 
             <div className="form-outline mb-4">
               <label className="inputs" htmlFor="form1Example2">Password</label>
-              <input type="password" id="form1Example2" className="form-control" onChange={e => setPassword(e.target.value)} value={password} />
+              <input type="password" id="form1Example2" className="form-control" 
+              onChange={e => setPassword(e.target.value)} value={password} 
+              required/>
             </div>
             <button type="submit" value="LOGIN" className="btn btn-primary btn-block">Sign in</button>
+            
           </div>
         </form>
       </div>

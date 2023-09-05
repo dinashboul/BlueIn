@@ -3,14 +3,19 @@ import Fetching from '../componenets/Fetching';
 import "../componenets/Home/homestyle.css"
 
 function CategoriesPage({ category }) {
-    const { data } = Fetching("https://store-wbly.onrender.com/items")
-
+    const { data,isLoading } = Fetching("https://store-wbly.onrender.com/items")
+    console.log("cate data is",data,isLoading)
     console.log("categoryField", category)
-    const categoryItem = data && data.filter(item => item.categories.includes(`${category}`));
+    let categoryItem=[]
+    if(!isLoading) {
+         categoryItem = data.filter((item) => item.categories.includes(`${category}`));
+         console.log(categoryItem)
+}
     return (
         
         <section className='category-section'>
-            {categoryItem ? categoryItem.map((item) =>
+            
+            {categoryItem.length !== 0? categoryItem.map((item) =>
             
                 <div className="container page-wrapper" key={item.item_id}>
                     <div className="page-inner">
@@ -37,7 +42,8 @@ function CategoriesPage({ category }) {
                     </div>
                 </div>
                 
-            ):(<section style={{top:"50%",left:"50%",position:"absolute",color:"blue"}}><h1> No Items Matching</h1></section>)}
+            ):(<section style={{top:"50%",left:"50%",position:"absolute",color:"blue",fontSize:"2rem"}}><h1> No Items Matching</h1></section>)}
+            
             </section>
     
     )

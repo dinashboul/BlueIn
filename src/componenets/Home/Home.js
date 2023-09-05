@@ -9,9 +9,10 @@ import UpdateItem from '../Crud-Process/UpdateItem'
 import Carousal from './Carousal'
 import { useSearchData } from '../../contexts/SearchContext'
 import { useTheme } from '../../contexts/ThemeContext'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 function Home() {
 const{theme}=useTheme()
-
+  const history=useHistory()
   const { user } = useAuth()
   const { dataContext } = useLogin()
   const { adminContext } = useLogin()
@@ -19,20 +20,18 @@ const{theme}=useTheme()
   const [userId, setUserId] = useState(null)
   const {searchData}=useSearchData()  
   const {nameFunContext}=useLogin()
-
-  const { data } = searchData == null ?
+  const {data}  = searchData == null ?
   Fetching('https://store-wbly.onrender.com/items'):
   Fetching(searchData)
-
   const [favorite, setFavItem] = useState([])
 
   // ////////////// User Info ////////////////////////
 
   useEffect(() => {
     const fetchData = async () => {
-      if (dataContext && dataContext.email) {
+      if (dataContext && dataContext) {
         try {
-          const response = await axios.get(`https://store-wbly.onrender.com/userbyemail/${dataContext.email}`);
+          const response = await axios.get(`https://store-wbly.onrender.com/userbyemail/${dataContext}`);
           console.log(response.data.user_id);
           setUserId(response.data.user_id);
           setFavItem(response.data.favorite)
@@ -48,20 +47,22 @@ const{theme}=useTheme()
     };
 
     fetchData();
-  }, [dataContext,imageProfile,nameFunContext]);
+  },[dataContext,imageProfile,nameFunContext]);
   // ////////////////////////// add to Favoutite///////////////
   const[favItemFound,setFavItemFound]=useState(false)
+
   const handleAddToCart = async (item,id,e) => {
     e.preventDefault()
     console.log("the item is ",item)
     console.log("the favourite",favorite)
     const exists=favorite.some(element=>element.item_id===id)
-    if (exists) { console.log ("This item is exists in your cart",favItemFound)
+
+    if (exists) {
+       console.log ("This item is exists in your cart",favItemFound)
       isOpen()
-  }
+        }
     else{
-      console.log("this item is not exists",favItemFound)
-     isClose()
+    console.log("this item is not exists",favItemFound)
     const configuration = {
       method: "Put",
       url:`https://store-wbly.onrender.com/user/ ${userId}`,
@@ -74,12 +75,13 @@ const{theme}=useTheme()
       .then((result) => {
         console.log("userId ",userId)
         console.log("favourite data is-->",favorite)
-        window.location.reload(true)
+        history.push('/usercart')
       })
       .catch((err) => {
         err = new Error()
         console.log("Faild Updated")
       })
+      isClose()
     }
   }
  const isOpen=()=>{
@@ -154,7 +156,11 @@ const{theme}=useTheme()
             <span className="price">{item.price}$</span>
             <span className="add-to-cart">
             { user && !adminContext ? (<>
-                <span className="txt" onClick={(e) => handleAddToCart(item,item.item_id,e)} >Add To Cart</span>
+                <span 
+                  style={{cursor:"pointer"}}
+                  className="txt"
+                
+                onClick={(e) => handleAddToCart(item,item.item_id,e)} >Add To Cart</span>
                 </>
                 ) : (<></>)
                 
@@ -162,12 +168,12 @@ const{theme}=useTheme()
                 
             {adminContext ?
               (<span className="txt" style={{display:"flex",justifyContent:"space-arround",gap:"30px"}}>
-              <span style={{backgroundColor:"#ADC4CE",color:"black"}}
+              <span style={{backgroundColor:"#ADC4CE",color:"black",cursor:"pointer"}}
               onClick={(e)=>handleDeleteItem(item.item_id,e)}
               >Delete Item</span>
               
               <span
-              style={{backgroundColor:"#ADC4CE",color:"black",border:"2px"}}
+              style={{backgroundColor:"#ADC4CE",color:"black",border:"2px",cursor:"pointer"}}
               onClick={(e)=>handleUpdate(item.item_id,item.price,item.categories,item.image_url,item.name,item.description,e)}
               >Edit Item</span>
               

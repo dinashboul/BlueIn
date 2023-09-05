@@ -33,7 +33,6 @@ function App() {
                 path="/category/:category"
                 render={({ match }) => <CategoriesPage category={match.params.category} />}
               />
-             
               <Route path='/signup'>
                 <SignUp />
               </Route>

@@ -7,7 +7,8 @@ export function useLogin(){
 }
 
 export function LoginProvider({ children }) {
-    const [dataContext,setDataContext]=useState(JSON.parse(localStorage.getItem('email')) || null)
+  // const emailRef = useRef(JSON.parse(localStorage.getItem('email')) || null);
+  const[dataContext,setDataContext]=useState(JSON.parse(localStorage.getItem('email')) || null);
     const[adminContext,setAdminCotext]=useState(JSON.parse(localStorage.getItem('admin')) || null);
     const[nameContext,setNameCotext]=useState(JSON.parse(localStorage.getItem('name')) || null);
     const[imageContext,setImageContext]=useState(localStorage.getItem('image')|| null);
@@ -26,15 +27,14 @@ export function LoginProvider({ children }) {
   
     // ///////email context////
     const emailContext = (email) => {
-        const dataContext1 = { email };
-        console.log("hello email",email)
-        localStorage.setItem('email', JSON.stringify(dataContext1));
-        setDataContext(dataContext1);
+      const dataContext=email
+     setDataContext(dataContext)
+      localStorage.setItem('email', JSON.stringify(dataContext));
       };
 
     const removeEmail=()=>{
-        localStorage.removeItem('email')
-        setDataContext(null)
+      setDataContext(null);
+      localStorage.removeItem('email');
     }
     // ///////admin context////////
    const adminPages= (adminCase)=>{
