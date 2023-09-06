@@ -21,10 +21,11 @@ const{theme}=useTheme()
   const [userId, setUserId] = useState(null)
   const {searchData}=useSearchData()  
   const {nameFunContext}=useLogin()
-  const { data } = searchData == null ? UseFetch('https://store-wbly.onrender.com/items') : UseFetch(searchData);
+  const { data,messNotFound} = searchData == null ? UseFetch('https://store-wbly.onrender.com/items') : UseFetch(searchData);
+  
   const [favorite, setFavItem] = useState([])
-
-  // ////////////// User Info ////////////////////////
+  
+    // ////////////// User Info ////////////////////////
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +34,7 @@ const{theme}=useTheme()
           const response = await axios.get(`https://store-wbly.onrender.com/userbyemail/${dataContext}`);
           console.log(response.data.user_id);
           setUserId(response.data.user_id);
-          setFavItem(response.data.favorite)
+          response.data.favorite?setFavItem(response.data.favorite):setFavItem([])
           response.data.image_url && imageProfile(response.data.image_url)
           response.data.full_name &&nameFunContext( response.data.full_name)
           // console.log("the image is",response.data.image_url)
@@ -49,15 +50,20 @@ const{theme}=useTheme()
   },[dataContext,imageProfile,nameFunContext]);
   // ////////////////////////// add to Favoutite///////////////
   const[favItemFound,setFavItemFound]=useState(false)
-
+  const[favMessage,setFavMessage]=useState("")
   const handleAddToCart = async (item,id,e) => {
     e.preventDefault()
     console.log("the item is ",item)
     console.log("the favourite",favorite)
+    if (!favorite) {
+     
+    }
     const exists=favorite.some(element=>element.item_id===id)
 
     if (exists) {
        console.log ("This item is exists in your cart",favItemFound)
+       setFavMessage("Item In Cart")
+
       isOpen()
         }
     else{
@@ -82,6 +88,7 @@ const{theme}=useTheme()
       })
       isClose()
     }
+  
   }
  const isOpen=()=>{
   setFavItemFound(true)
@@ -130,7 +137,9 @@ const{theme}=useTheme()
     <Carousal />
     <section className={`articles ${theme === 'dark' ? 'dark-theme' : ''}`} >
     {/* {favItemFound ? <h1 style={{marginTop:"200px"}}>Item In Cart</h1>:<></>} */}
-
+    {<h1 style={{position:"absolute",top:"3%",left:"40%",color:'blue',fontWeight:'bold',fontSize:"3rem",}}>{messNotFound}</h1>}
+    {<h1 style={{position:"absolute",top:"3%",left:"40%",color:'blue',fontWeight:'bold',fontSize:"3rem"}}>{favMessage}</h1>}
+    
       {data && data.map(item => (
       <div className="container page-wrapper"  key={item.item_id}>
   <div className="page-inner">

@@ -104,7 +104,7 @@ return (<>
         <option value="bags">Bags</option>
         <option value="accessories">Accessories</option>
       </select>
-      <p>Selected Categories: {categories.join(', ')}</p>
+      <p className="inputFields" >Selected Categories: {categories.join(', ')}</p>
 
         </li>
         <li>

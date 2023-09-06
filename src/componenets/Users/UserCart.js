@@ -10,7 +10,6 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 const UserCart = () => {
   const{imageProfile}=useLogin()
   const {dataContext}=useLogin()
-  const history=useHistory()
   // console.log("the email of user is ",email)
 const [isUpdate, setIsUpdate] = useState(false)
 // const apiId=`https://store-wbly.onrender.com/user/${user_id}`
@@ -89,8 +88,8 @@ useEffect(()=>{
       .then((result) => {
         // console.log("the Update of image success", result.data)
         setIsUpdate(true)
-        removeImage()
         imageProfile(image_url)
+        removeImage()
       })
       .catch((err) => {
         err = new Error()
@@ -106,9 +105,8 @@ useEffect(()=>{
 
   const closeModal = () => {
     setIsModalOpen(false);
-    imageProfile(image_url)
     console.log("model is closed",isModalOpen)
-    history.push('/usercart')
+    window.location.reload(true);
   };
 
 

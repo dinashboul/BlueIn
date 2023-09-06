@@ -1,58 +1,76 @@
-import React from 'react'
-import { Modal, Button } from "react-bootstrap";
-
+import React from 'react';
+  import Modal from "react-overlays/Modal";
+import "./modalImage.css"
 function Model({ isOpen, closeModal,image_url1,setImageUrl1,update,isUpdate,isModalOpen }) {
-  console.log(closeModal,isModalOpen)
-  const styleBtn={
-   fontSize:"1rem",
-   color:"white",
-   fontWeight:"bold"
-  }
+  console.log(isUpdate)
+  const renderBackdrop = (props) => <div className="backdrop" {...props} />;
 
-  const message={
-    width: "500px",
-    height:"auto",
-    padding: "20px",
-    fontSize:"1.5rem",
-    borderRadius: "10px",
-    boxShadow:" 0px 4px 6px rgba(0, 0, 0, 0.1)", 
-    backgroundColor:" #ecf0f3",
-    color:"blue",
-    marginTop:"30px",
-    display:"flex",
-    justifyContent:"center",
-    alignItems:"center"
-  }
+  
     return (
+     
+      <Modal
+  className="modal1"
+  show={isModalOpen}
+  onHide={closeModal}
+  renderBackdrop={renderBackdrop}
+>
+  <div>
+    <div className="modal1-header">
+      <div className="modal1-title">Change Your Photo</div>
+      <div>
+        <span className="close-button" onClick={closeModal}>
+          x
+        </span>
+      </div>
+    </div>
+    <div className="modal1-desc">
+      <input
+        type="text"
+        value={image_url1}
+        onChange={(e) => setImageUrl1(e.target.value)}
+        required
+      />
+    </div>
+    <div className="modal1-footer">
+      <button className="secondary-button" onClick={closeModal}>
+        Close
+      </button>
+      <button className="primary-button" onClick={update}>
+        Save Changes
+      </button>
+      {isUpdate &&  <p>Picture Updated 😃</p> }
     
-    <Modal  className="modal-overlay"
-     show={isOpen} onHide={closeModal} 
-     >
-      <Modal.Title> <h1  style={{marginTop:"10px",marginLeft:"50px",color:"blue",fontWeight:"bold",fontSize:"2.5rem"}} > Change Your Photo</h1></Modal.Title>
-      <Modal.Body  style={{backgroundColor:" #ecf0f3",display:"flex",justifyContent:"center",alignItems:"center",marginTop:"100px"}}> 
-      <input type="text " style={{backgroundColor:"white",color:"blue",fontSize:"2em"}}  
-      value ={image_url1}
-       onChange={(e) =>
-        setImageUrl1(e.target.value)}
-        required/>
-      </Modal.Body>
-      <Modal.Footer style={{display:"flex",justifyContent:"space-around"}}>
-        <Button style={styleBtn} variant="secondary" onClick={closeModal}>
-          Close
-        </Button>
-        <Button style={styleBtn} variant="primary" onClick={update}>
-          Save Changes
-        </Button>
-        
-      </Modal.Footer>
-      {isUpdate && <div style={message}>
-    <p>Picture Updated 😃</p>
-  </div>}
-    </Modal>
+    </div>
+  </div>
+  
+</Modal>
+
     
-    
-   
-  )
+    )
 }
 
 export default Model
+//   <Modal style={modalOverlay}
+  //    show={isOpen} onHide={closeModal} 
+  //    >
+  //     <Modal.Title> <h1  style={{marginTop:"10px",marginLeft:"50px",color:"blue",fontWeight:"bold",fontSize:"2.5rem"}} > Change Your Photo</h1></Modal.Title>
+  //     <Modal.Body  style={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:"100px"}}> 
+  //     <input type="text " style={{backgroundColor:"white",color:"blue",fontSize:"2em"}}  
+  //     value ={image_url1}
+  //      onChange={(e) =>
+  //       setImageUrl1(e.target.value)}
+  //       required/>
+  //     </Modal.Body>
+  //     <Modal.Footer style={{display:"flex",justifyContent:"space-around"}}>
+  //       <Button style={styleBtn} variant="secondary" onClick={closeModal}>
+  //         Close
+  //       </Button>
+  //       <Button style={styleBtn} variant="primary" onClick={update}>
+  //         Save Changes
+  //       </Button>
+        
+  //     </Modal.Footer>
+  //     {isUpdate && <div style={message}>
+  //   <p>Picture Updated 😃</p>
+  // </div>}
+  //   </Modal>

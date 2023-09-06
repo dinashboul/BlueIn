@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const UseFetch = (url) => {
   const [data,setData]=useState(null)
-  
+  const [messNotFound,setMessNotFound]=useState("")
 
   useEffect(() => {
     const fetchData = async () => {
@@ -11,8 +11,9 @@ const UseFetch = (url) => {
         const result = await axios.get(url)
         
          setData( result.data);
-      } catch (error) {
-        console.log("no data fetching")
+      } catch (err) {
+        setMessNotFound("No Items Found")
+        console.log("no data fetching",err)
       }
     };
          fetchData();
@@ -20,7 +21,7 @@ const UseFetch = (url) => {
     
   }, [url]);
 
-  return {data}
+  return {data,messNotFound}
 };
 
 export default UseFetch;

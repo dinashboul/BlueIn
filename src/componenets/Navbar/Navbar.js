@@ -24,13 +24,16 @@ const Navbar = () => {
   const { SearchDataFun } = useSearchData()
   const [searchQuery, setSearchQuery] = useState('');
   const { nameContext } = useLogin()
+
   const handleSearch = (e) => {
     if (e.keyCode === 13) {
       console.log("search--> ", searchQuery)
       if (searchQuery !== '') {
         // SearchDataFun(`https://store-wbly.onrender.com/items/search/${searchQuery}`)
+        history.push('/');
         SearchDataFun(`https://store-wbly.onrender.com/items/search/item?name=${searchQuery}`)
-
+        
+        
       }
       else { window.location.reload(true) }
     }

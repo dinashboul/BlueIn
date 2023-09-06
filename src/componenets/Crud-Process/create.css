@@ -39,8 +39,8 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 90%;
-  height: 80%;
+  width: 60%;
+  height: 70%;
   background:rgb(52, 75, 90);
   transition: .2s;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
@@ -57,13 +57,13 @@
   font-size: 20px;
   font-weight: bold;
   padding: 10px;
-  width: 500px;
+  width: 15em;
   border: 1px solid rgb(17, 240, 240);
   border-top: none;
   border-left: none;
   border-right: none;
   background: rgba(186, 194, 231, 0.2);
-  color: rgb(242, 242, 246);
+  color: rgb(196, 44, 199);
   outline: none;
   top: 0;
 }
@@ -71,7 +71,7 @@
 .noBullet {
   list-style-type: none;
   padding: 0;
- 
+
 }
 
 #join-btn {
@@ -86,6 +86,6 @@
   transition: .4s;
   margin-right: 0px;
   position: absolute;
-  left: 25%;
+  left: 27%;
 }
 
