@@ -6,7 +6,6 @@ import Model from './Model';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLogin } from '../../contexts/LoginContext';
 import Fetching from '../Fetching';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 const UserCart = () => {
   const{imageProfile}=useLogin()
   const {dataContext}=useLogin()
