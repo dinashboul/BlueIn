@@ -58,7 +58,7 @@ const Navbar = () => {
             <div style={{ display: "flex", justifyContent: "space-around", gap: "2px" }}>
               <li style={{ top: "1" }}><img to="#" onClick={toggleTheme}
                 style={{ width: "50px", height: "50px" }}
-                alt="" src="https://png.pngtree.com/template/20200316/ourmid/pngtree-bird-blue-logo-template-image_354657.jpg"
+                alt="" src="https://o.remove.bg/downloads/ca0bf555-fbc4-4961-8af5-85b910e5e456/pngtree-bird-blue-logo-template-image_354657_1_-removebg-preview.png"
               />
               </li>
               <li style={{ marginTop: "0", display: "flex", alignItems: "center" }}>
