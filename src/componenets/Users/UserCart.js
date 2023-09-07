@@ -65,8 +65,9 @@ useEffect(()=>{
 
 
   //  update pic ////////////////////////////////////////////////////////////////////////////////////
-  const {removeImage}=useLogin()
-
+  const {removeImage,nameFunContext,removeName }=useLogin()
+  const NameCard =data.full_name && data.full_name;
+  const [full_name,setFullName]=useState(NameCard)
   const imgCard =data.image_url && data.image_url;
   // console.log(data.image_url)
   const [image_url, setImageUrl] = useState(imgCard);
@@ -79,6 +80,7 @@ useEffect(()=>{
       url: "https://store-wbly.onrender.com/user/" + data.user_id,
       data: {
         image_url,
+        full_name
         // favorite:filteredFavorites
       }
 
@@ -87,8 +89,11 @@ useEffect(()=>{
       .then((result) => {
         // console.log("the Update of image success", result.data)
         setIsUpdate(true)
-        imageProfile(image_url)
         removeImage()
+        imageProfile(image_url)
+        removeName()
+        nameFunContext(full_name)
+        
       })
       .catch((err) => {
         err = new Error()
@@ -153,7 +158,9 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
     })
 
 }
-  return (<section>
+
+
+return (<section>
   {user?(<>
   <div className='div-container'
   style={{
@@ -164,8 +171,10 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
         <img
           src={data.image_url} alt='' 
           />
-        <h2 style={{color:"blue"}}>{data.full_name}</h2>
-        <ul>
+
+        <h2 style={{color:"blue"}}
+        >{data.full_name}</h2>
+           <ul>
           <li>
           <p
             onClick={openModal}
@@ -181,6 +190,11 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
             setImageUrl1={setImageUrl}
             update={update}
             isUpdate={isUpdate}
+            // ///////
+            full_name={full_name}
+            setFullName={setFullName}
+            // handleUpdateFullName={handleUpdateFullName}
+            
           />}
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
   import Modal from "react-overlays/Modal";
 import "./modalImage.css"
-function Model({ isOpen, closeModal,image_url1,setImageUrl1,update,isUpdate,isModalOpen }) {
+function Model({ isOpen, closeModal,image_url1,setImageUrl1,update,isUpdate,isModalOpen,full_name,setFullName}) {
   console.log(isUpdate)
   const renderBackdrop = (props) => <div className="backdrop" {...props} />;
 
@@ -16,19 +16,32 @@ function Model({ isOpen, closeModal,image_url1,setImageUrl1,update,isUpdate,isMo
 >
   <div>
     <div className="modal1-header">
-      <div className="modal1-title">Change Your Photo</div>
+      <div className="modal1-title">Hello Mr/s {full_name}</div>
       <div>
         <span className="close-button" onClick={closeModal}>
           x
         </span>
       </div>
     </div>
-    <div className="modal1-desc">
+    <div className="modal1-desc" style={{ position: "relative" ,width:"90%"}}>
+      <label
+      style={{ position: "absolute", top: "5px", left: "10%",color:"#007bff" }}>Change Yor Photo</label>
       <input
         type="text"
         value={image_url1}
         onChange={(e) => setImageUrl1(e.target.value)}
-        required
+        placeholder='ImageProfile'
+        style={{ position: "absolute", top: "30px", left: "4%" }}
+      />
+      <label
+      style={{ position: "absolute", top: "70px", left: "10%" ,color:"#007bff"}}>Change Your Name</label>
+      <input
+        type="text"
+        value={full_name}
+        onChange={(e) => setFullName(e.target.value)}
+       placeholder='Full-Name'
+       style={{ position: "absolute", top: "110px", left: "4%" }}
+
       />
     </div>
     <div className="modal1-footer">

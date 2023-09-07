@@ -6,6 +6,7 @@
   .modal1 {
     position: absolute;
     width: 400px;
+    height: 30%;
     z-index: 1040;
     top: 40%;
     left: 40%;
@@ -39,8 +40,8 @@
   }
   
   .modal1-desc,
-  .modal1-header,
-  .modal1-footer {
+  .modal1-header
+   {
     padding: 12px;
   }
   
@@ -65,23 +66,31 @@
   .modal1-footer {
     border-top: 1px solid #e9ecef;
     display: flex;
-    justify-content: flex-end;
-    gap: 8px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 12px;
+    position:absolute;  
+    bottom: 0;
+    
+    padding: 20px;
   }
   
   .secondary-button {
     color: #fff;
     background-color: #6c757d;
+    width: auto;
   }
   .primary-button {
     color: #fff;
     background-color: #007bff;
+    
   }
   
   .modal1-example {
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    flex-direction: column;
-  }
+
+}

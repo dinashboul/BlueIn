@@ -13,6 +13,8 @@
     text-align: center;
     overflow: hidden;
     position: relative;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+
   }
   
   .our-team .picture {
