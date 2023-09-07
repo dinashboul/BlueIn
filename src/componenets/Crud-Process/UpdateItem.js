@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, {  useState } from "react";
 import { Modal } from "react-bootstrap";
+import "./create.css"
 import "./modal.css"
 function UpdateItem({ objOfItem, isOpen, closeModal }) {
   //  Get Item By id :
@@ -43,8 +44,7 @@ function UpdateItem({ objOfItem, isOpen, closeModal }) {
     
     <Modal 
       show={isOpen} onHide={closeModal} >
-      <div className="signupSection" style={{ display: "flex", justifyContent: "center", alignItems: "center",
-       width:"500px",marginTop:'100%',height:"100px"}}>
+      <div className="signupSection" style={{ display:"flex",alignItems:"center",justifyContent:"center",top:"50%",left:"50%"}}>
         <div className="info" style={{marginRight:"50px"}}>
           <img className="icon ion-ios-ionic-outline" 
           style={{width:"200px",height:"200px"}}
@@ -52,9 +52,11 @@ function UpdateItem({ objOfItem, isOpen, closeModal }) {
           
         </div>
         {/* ////////// form //////// */}
-        <form action="#" style={{height:"700px"}}
-            onSubmit={(e) => handleUpdateItem} >
-          <ul className="noBullet">
+        <form action="#" style={{width:"500px",height:"700px"}}
+        
+            onSubmit={(e) => handleUpdateItem}
+            className="signupForm" >
+          <ul className="noBullet" style={{top:"10%",position:"absolute"}}>
             <li> <h2
               style={{ color: "blue", fontWeight: "bold", fontSize: "2rem", paddingTop: "10px" }}>
               Update Item</h2></li>
@@ -110,13 +112,13 @@ function UpdateItem({ objOfItem, isOpen, closeModal }) {
             </li>
 
             <li >
-              <div style={{gap: "10px",position:"relative"}}>
+              <div style={{display:"flex",justifyContent:"space-around",gap:"300px"}}>
               <button type="submit" id="join-btn" name="join" alt="Join" value="Join"
-                 style={{position:"absolute",left:"0",width:"200px"}}
+                 style={{width:"100px",display:"flex",alignItems:"center",justifyContent:"center",left:"0"}}
                 onClick={handleUpdateItem}
               >Submit</button>
               <button id="join-btn" 
-              style={{position:"absolute",right:"0",left:"40%",width:"200px"}}
+              style={{width:"100px",display:"flex",alignItems:"center",justifyContent:"center",left:"55%"}}
               onClick={closeModal}>Close</button>
               </div>
             </li>
