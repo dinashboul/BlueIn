@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import "./usr.css"
-import "../Home/homestyle.css"
 import axios from 'axios';
 import Model from './Model';
 import { useAuth } from '../../contexts/AuthContext';
@@ -164,10 +163,10 @@ return (<section>
   {user?(<>
   <div className='div-container'
   style={{
-    display:'flex',flexWrap:"nowrap",
-  position:'relative',marginLeft:"40%",width:"100%"}}>
-    <div className="image-area" style={{position:'absolute',top:"30%",left:"30%"}} >
-      <div className="img-wrapper" key={data.user_id}>
+    display:'grid',gridTemplateRows: "repeat(2,1fr) ",marginTop:"3%",gridColumn: "1",gap:"10%",
+    }}>
+    <div className="image-area"  >
+      <div className="img-wrapper" >
         <img
           src={data.image_url} alt='' 
           />
@@ -198,16 +197,17 @@ return (<section>
           />}
       </div>
     </div>
-    <span style={{position:'absolute',bottom:"30%",left:"0",
-    color:'blue',fontSize:"1.3rem",fontWeight:"bold"}}>
-      <button  onClick={handleDamege}
-      style={{width:"300px"}}
+    <span style={{
+    color:'blue',fontSize:"1.3rem",fontWeight:"bold",marginLeft:"30%",maxWidth:"100%",}}>
+      <button  onClick={handleDamege} type="reset"
+      style={{width:"300px",display:"flex",alignItems:"center",justifyContent:'center'}}
       >Refresh your items</button>
  </span>
  </div>
 {/* // ////////////////////// Favorite item /////////////////////////// */}
 
-<section className="articles" style={{marginTop:"3%",marginLeft:'50%',marginRight:"40px"}}>
+<section className="articles" style={{marginTop:"3%",marginLeft:'50%',marginRight:"40px",
+    gridTemplateColumns: "repeat(3, 1fr)"}}>
   
   {data.favorite&&data.favorite.map((item)=>
       

@@ -3,13 +3,9 @@
 input {
     caret-color: red;
   }
-  .modal{
-  }
-  .modal.show .modal-content{
-    pointer-events: auto;
-    border:none;
-   background-color: transparent;
-    border-radius:0ch;
+  
+  .my-modal .modal-content {
+    background-color: red;
   }
 
   section{

@@ -44,9 +44,12 @@ function SignUp({isOpen,isClose,open}) {
 
 
   return (   
-    <Modal show={open} onHide={isClose} 
-   
-    >  
+    <Modal show={open} onHide={isClose}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      contentClassName="bg-transparent border-0 w-auto"
+      className="my-modal">
     <div className='center' >
    
     <form className='container-login' 
