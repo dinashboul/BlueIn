@@ -1,4 +1,4 @@
-.row{
+.container1.row{
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
   gap: 20px; 

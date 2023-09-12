@@ -3,10 +3,11 @@ import './navbar.css'
 import { useAuth } from "../../contexts/AuthContext";
 import { useState } from "react";
 import { useLogin } from "../../contexts/LoginContext";
+import birdBlue from  "../../assests/birdBlue.png"  ;
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import Sidebar from "../Crud-Process/Sidebar";
 import { useSearchData } from '../../contexts/SearchContext'
 import { useTheme } from "../../contexts/ThemeContext";
+import SignUp from "../SignUp/SignUp";
 const Navbar = () => {
   const { user } = useAuth()
   const history = useHistory()
@@ -16,7 +17,6 @@ const Navbar = () => {
 
   const { imageContext, removeImage } = useLogin()
   const { removeEmail, removeAdmin } = useLogin()
-  const { adminContext } = useLogin()
   const { dataContext } = useLogin()
   const { removeName } = useLogin()
   console.log("navbar email is ->", dataContext)
@@ -49,40 +49,53 @@ const Navbar = () => {
 
   }
 
+  const[open,setOpen]=useState(false)
+
+  const isOpen=()=>{
+    setOpen(true)
+  
+   }
+   const isClose=()=>{
+    setOpen(false)
+  
+   }
+
   return (
     <div className='navbar'
       style={{ top: "0", backgroundColor: theme === 'dark' ? '#514e4e' : '' }}>
-      <div className="links">
-        <ul className="list " aria-label="Primary" style={{ marginTop: "10px" }} >
-          <div style={{ marginLeft: '20%', display: "flex", justifyContent: "space-around", gap: "70px" }}>
+        <div className="list"  aria-label="Primary" style={{  }} >
+          <div style={{ marginLeft: '8%', display: "flex", justifyContent: "space-around", gap: "70px" }}>
             <div style={{ display: "flex", justifyContent: "space-around", gap: "2px" }}>
-              <li style={{ top: "1" }}><img to="#" onClick={toggleTheme}
+              <span style={{ top: "1" }}>
+                <img to="#" onClick={toggleTheme}
                 style={{ width: "50px", height: "50px" }}
-                alt="" src="https://o.remove.bg/downloads/ca0bf555-fbc4-4961-8af5-85b910e5e456/pngtree-bird-blue-logo-template-image_354657_1_-removebg-preview.png"
+                alt="" 
+                src={birdBlue}
               />
-              </li>
-              <li style={{ marginTop: "0", display: "flex", alignItems: "center" }}>
-                <Link to="/" style={{ fontSize: "1.5rem", fontWeight: "bold", color: "#007bff" }}> BlueIn</Link>
-              </li>
+              </span>
+              <span style={{ marginTop: "4px", display: "flex", aspangnItems: "center" }}>
+                <Link to="/" style={{ fontSize: "1.5rem", fontWeight: "bold", color: "#007bff",textDecoration:"none" }}>
+                   BlueIn</Link>
+              </span>
             </div>
-            <li>  <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
+            <span>  <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
               style={{ width: "200px", textAlign: "center", fontSize: "1rem" }}
               onKeyDown={handleSearch}
-              placeholder="Search..." /></li>
+              placeholder="Search..." /></span>
 
           </div>
-          {adminContext ? (
+          {/* {adminContext ? (
             <Sidebar />
-          ) : (<></>)}
+          ) : (<></>)} */}
 
 
           {user ? (
-            <div className="buttonclass" style={{ disple: "flex", alignItems: "space-around", gap: "30px" }}>
+            <div className="buttonclass" style={{ disple: "flex", aspangnItems: "space-around", gap: "30px" }}>
 
 
               <Link to="/usercart"> <img className="profile-image"
                 src={imageContext} alt="" /></Link>
-              <Link to="/usercart" style={{ color: "#007bff", fontSize: "1rem" }}>{nameContext}</Link>
+              <Link to="/usercart" style={{ color: "#007bff", fontSize: "1rem" ,textDecoration:"none"}}>{nameContext}</Link>
 
               <button onClick={LogOut} className="logout-button"
                 style={{ width: "100px", height: "50px" ,marginRight:"8%",textAlign:"center"}}
@@ -91,16 +104,19 @@ const Navbar = () => {
 
           ) : (<div style={{
             marginRight: "8%", display: "flex", justifyContent: "space-around",
-            gap: "30px", alignItems: "center", right: "0", position: "absolute", top: "40px"
+            gap: "30px", alignItems: "center", right: "0", position: "absolute",
           }}>
-            <li><Link to="/login"> Login </Link></li>
-            <li><Link to="/signup"> SignUP </Link></li>
-          </div>)}
-        </ul>
+            <p><Link to="/login" style={{color:"#007bff",textDecoration:"none"}}> Login </Link></p>
+            <p onClick={isOpen}   style={{color:"#007bff",cursor:"pointer",fontSize:"1rem",fontWeight:"bold"}}> 
+            SignUP </p>
+          </div> )}
+        </div>
 
-      </div>
+     
 
-
+          <SignUp isOpen={open}
+          isClose={isClose}
+          open={open} />
     </div>
 
   );

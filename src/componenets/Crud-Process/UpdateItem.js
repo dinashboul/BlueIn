@@ -1,37 +1,41 @@
 import axios from "axios";
 import React, {  useState } from "react";
-import { Modal } from "react-bootstrap";
 import "./create.css"
 import "./modal.css"
-function UpdateItem({ objOfItem, isOpen, closeModal }) {
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import Fetching from "../Fetching";
+function UpdateItem() {
+  const {itemId} = useParams();
+  const { data,isLoading } = Fetching(`https://store-wbly.onrender.com/items/${itemId}`)
+
   //  Get Item By id :
-  console.log("itemid in update file", objOfItem)
-  const [name, setNameItem] = useState(objOfItem.name)
-  const [description, setDescription] = useState(objOfItem.description)
-  const [image_url, setImageUrl] = useState(objOfItem.image_url)
-  const [price, setPrice] = useState(objOfItem.price)
+  console.log("itemid in update file",data )
+  
+   const [name, setNameItem] =  useState("")
+  const [description, setDescription] = useState("")
+  const [image_url, setImageUrl] = useState("")
+  const [price, setPrice] = useState("")
   const inputValue ="";
-  const url = `https://store-wbly.onrender.com/items/${objOfItem.item_id}`
-  console.log(url)
-  const [categories, setcategories] = useState(objOfItem.categories)
-
-
+  const [categories, setcategories] = useState([])
+  
+  const url = `https://store-wbly.onrender.com/items/${itemId}`
   const handleUpdateItem = (e) => {
     e.preventDefault()
     const configrations = {
       method: "PUT",
       url: url,
       data: {
-        name,
-        description,
-        image_url,
-        price,
-        categories: [...categories, inputValue]
+       name: !name? data.name : name,
+        description :!description?data.description: description,
+        image_url:!image_url ? data.image_url:image_url,
+        price:!price ? data.price:price,
+        categories:!categories ?data.categories : [...categories, inputValue]
       }
 
     }
     axios(configrations)
       .then((res) => {console.log("the data is updated")
+      window.location.reload(true);
    
     })
       .catch((err) => console.log("the err ", err))
@@ -40,43 +44,40 @@ function UpdateItem({ objOfItem, isOpen, closeModal }) {
     const selectedOptions = [...categories,option]
     setcategories(selectedOptions);
   };
-  return (
-    
-    <Modal 
-      show={isOpen} onHide={closeModal} >
-      <div className="signupSection" style={{ display:"flex",alignItems:"center",justifyContent:"center",top:"50%",left:"50%"}}>
-        <div className="info" style={{marginRight:"50px"}}>
+  return (<>
+   {!isLoading? (
+    <>
+        <div className="info" style={{position:"absolute", top:'10%',left:"10%"}}>
           <img className="icon ion-ios-ionic-outline" 
           style={{width:"200px",height:"200px"}}
-          aria-hidden="true" alt="" src={image_url}/>
+          aria-hidden="true" alt="" src={data.image_url}/>
           
         </div>
-        {/* ////////// form //////// */}
-        <form action="#" style={{width:"500px",height:"700px"}}
-        
+        <form action="#" 
+          style={{marginTop:"5%",left:"30%",width:"30%",bottom:'80%'}}
             onSubmit={(e) => handleUpdateItem}
             className="signupForm" >
-          <ul className="noBullet" style={{top:"10%",position:"absolute"}}>
+          <ul className="noBullet" >
             <li> <h2
               style={{ color: "blue", fontWeight: "bold", fontSize: "2rem", paddingTop: "10px" }}>
               Update Item</h2></li>
             <li>
               <label htmlFor="inputField"></label>
-              <input type="text" className="inputFields" id="username" name="pieceName" placeholder="PieceName"
+              <input type="text" className="inputFields" id="username" name="pieceName" placeholder={data.name}
                 value={name}
                 onChange={(e) => setNameItem(e.target.value)}
               />
             </li>
             <li>
               <label htmlFor="inputField"></label>
-              <input type="textarea" className="inputFields" id="descript" name="Description" placeholder="Description"
+              <input type="textarea" className="inputFields" id="descript" name="Description" placeholder={data.description}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
             </li>
             <li>
               <label htmlFor="inputField"></label>
-              <textarea type="textarea"  className="inputFields" id="image" name="image" placeholder="ImageUrl"
+              <textarea type="textarea"  className="inputFields" id="image" name="image" placeholder={data.image_url}
                 value={image_url}
                 onChange={(e) => setImageUrl(e.target.value)}
               />
@@ -104,7 +105,7 @@ function UpdateItem({ objOfItem, isOpen, closeModal }) {
             </li>
             <li>
               <label htmlFor="inputField"></label>
-              <input type="text" className="inputFields" id="price" name="number" placeholder="Price"
+              <input type="text" className="inputFields" id="price" name="number" placeholder={data.price}
 
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
@@ -114,19 +115,17 @@ function UpdateItem({ objOfItem, isOpen, closeModal }) {
             <li >
               <div style={{display:"flex",justifyContent:"space-around",gap:"300px"}}>
               <button type="submit" id="join-btn" name="join" alt="Join" value="Join"
-                 style={{width:"100px",display:"flex",alignItems:"center",justifyContent:"center",left:"0"}}
+                 style={{width:"100px",display:"flex",alignItems:"center",justifyContent:"center",left:"30%"}}
                 onClick={handleUpdateItem}
               >Submit</button>
-              <button id="join-btn" 
-              style={{width:"100px",display:"flex",alignItems:"center",justifyContent:"center",left:"55%"}}
-              onClick={closeModal}>Close</button>
+              
               </div>
             </li>
           </ul>
         </form>
-      </div>
-    </Modal>
- 
+        
+   </>
+   ):(<div> <h1 style={{color:"blue",fontSize:"2rem",position:"absolute",top:"5%",left:"8%"}}>Is Loading ....</h1></div>)}</>
   )
 }
 

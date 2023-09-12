@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import './homestyle.css'
 import axios from 'axios'
 // import Fetching from '../Fetching'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import { useAuth } from '../../contexts/AuthContext'
 import { useLogin } from '../../contexts/LoginContext'
 import DeleteItem from '../Crud-Process/DeleteItem'
-import UpdateItem from '../Crud-Process/UpdateItem'
 import Carousal from './Carousal'
 import { useSearchData } from '../../contexts/SearchContext'
 import { useTheme } from '../../contexts/ThemeContext'
@@ -106,33 +106,7 @@ const{theme}=useTheme()
     setDeleteItem(itemId)
   }
 
-  const [updateItem,setUpdateItem]=useState({})
-  const handleUpdate=(item_id,price,categories,image_url,name,description,e)=>{
-    e.preventDefault()
-    setUpdateItem({
-      item_id ,
-      price,
-      categories,
-      image_url,
-      name,
-      description
-
-    })
-  }
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-    console.log("opened")
-  };
-
-  const closeModal = (e) => { 
-    setIsModalOpen(false);
-    console.log("model is closed",isModalOpen)
-
-  };
-
+  
   return (<>
     <Carousal />
     <section className={`articles ${theme === 'dark' ? 'dark-theme' : ''}`} >
@@ -180,10 +154,10 @@ const{theme}=useTheme()
               onClick={(e)=>handleDeleteItem(item.item_id,e)}
               >Delete Item</span>
               
-              <span
+              <Link to={`/updateitem/${item.item_id}`}
               style={{backgroundColor:"#ADC4CE",color:"black",border:"2px",cursor:"pointer"}}
-              onClick={(e)=>handleUpdate(item.item_id,item.price,item.categories,item.image_url,item.name,item.description,e)}
-              >Edit Item</span>
+              // onClick={(e)=>handleUpdate(item.item_id,item.price,item.categories,item.image_url,item.name,item.description,e)}
+              >Edit Item</Link>
               
               </span>
               ):
@@ -198,15 +172,7 @@ const{theme}=useTheme()
 </div>
    ))} 
    {deleteItem !==null &&<DeleteItem deleteItem={deleteItem}/>}
-   
-      {Object.keys(updateItem).length !==0 && <UpdateItem 
-      isOpen={openModal} 
-      closeModal={closeModal}
-      objOfItem={updateItem}
-      />}
-
-
-    </section>
+</section>
 
     </> )
 

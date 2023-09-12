@@ -8,6 +8,7 @@
   box-sizing: border-box;
   background: #ecf0f3;
   position: relative;
+ width: 100%;
 }
 
 .logo-section {
@@ -28,9 +29,9 @@ align-items: center;
   padding: 0;
   margin: 0;
   display:flex;
-  /* justify-content:space-around; */
-
-  gap:100px;
+  align-items: center;
+  width:100%;
+  
 }
 
 .buttonclass {

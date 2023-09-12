@@ -19,12 +19,15 @@ a {
     text-decoration: none; /* Remove default underline */
     transition: color 0.2s ease; /* Smooth color transition on hover */
     font-size: 1rem;
+    text-decoration:none
+
   }
   
-  a:hover {
+   a:hover {
     color: #b30086; /* Darker blue color on hover */
     text-decoration:none
   }
+  .p-tag:hover{ color: #b30086;}
 
   .category-section{
   display: grid;

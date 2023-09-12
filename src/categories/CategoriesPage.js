@@ -1,8 +1,10 @@
 import React from 'react'
 import Fetching from '../componenets/Fetching';
 import "../componenets/Home/homestyle.css"
-
-function CategoriesPage({ category }) {
+// import { useAuth } from '../contexts/AuthContext';
+// import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+// import { useLogin } from '../contexts/LoginContext';
+function CategoriesPage({ category ,handleAddToCart,handleDeleteItem}) {
     const { data,isLoading } = Fetching("https://store-wbly.onrender.com/items")
     console.log("cate data is",data,isLoading)
     console.log("categoryField", category)
@@ -11,6 +13,8 @@ function CategoriesPage({ category }) {
          categoryItem = data.filter((item) => item.categories.includes(`${category}`));
          console.log(categoryItem)
 }
+// const { user } = useAuth()
+// const { adminContext } = useLogin()
     return (
         
         <section className='category-section'>
@@ -35,7 +39,36 @@ function CategoriesPage({ category }) {
                                         <div className="h-bg-inner"></div>
                                     </div>
                                     <p className="cart" >
-                                    <span className="price"> Price :{item.price}$</span></p>
+                                    <span className="price">{item.price}$</span>
+                                    {/* <span className="add-to-cart">
+            { user && !adminContext ? (<>
+                <span 
+                  style={{cursor:"pointer"}}
+                  className="txt"
+                
+                onClick={(e) => handleAddToCart(item,item.item_id,e)} >Add To Cart</span>
+                </>
+                ) : (<></>)
+                
+                }
+                
+            {adminContext ?
+              (<span className="txt" style={{display:"flex",justifyContent:"space-arround",gap:"30px"}}>
+              <span style={{backgroundColor:"#ADC4CE",color:"black",cursor:"pointer"}}
+              onClick={(e)=>handleDeleteItem(item.item_id,e)}
+              >Delete Item</span>
+              
+              <Link to={`/updateitem/${item.item_id}`}
+              style={{backgroundColor:"#ADC4CE",color:"black",border:"2px",cursor:"pointer"}}
+              // onClick={(e)=>handleUpdate(item.item_id,item.price,item.categories,item.image_url,item.name,item.description,e)}
+              >Edit Item</Link>
+              
+              </span>
+              ):
+              (<></>)}
+
+            </span> */}
+                                    </p>
                                 </div>
                             </div>
                         </div>

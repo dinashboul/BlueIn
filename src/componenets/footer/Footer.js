@@ -1,61 +1,48 @@
-// import React from 'react'
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import "./footer.css"
+import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./footer.css"
 
-// function Footer() {
-//   return (
-//     <footer>
-//     <div className="container">
-//     <div className="row">
-//         <div className="col-md-5">
-//             <h5><i className="fa fa-road"></i> ACME CO INC.</h5>
-//             <div className="row">
-//                 <div className="col-6">
-//                     <ul className="list-unstyled">
-//                         <li><a href="">Product</a></li>
-//                         <li><a href="">Benefits</a></li>
-//                         <li><a href="">Partners</a></li>
-//                         <li><a href="">Team</a></li>
-//                     </ul>
-//                 </div>
-//                 <div className="col-6">
-//                     <ul className="list-unstyled">
-//                         <li><a href="">Documentation</a></li>
-//                         <li><a href="">Support</a></li>
-//                         <li><a href="">Legal Terms</a></li>
-//                         <li><a href="">About</a></li>
-//                     </ul>
-//                 </div>
-//             </div>
-//             <ul className="nav">
-//                 <li className="nav-item"><a href="" className="nav-link pl-0"><i className="fa fa-facebook fa-lg"></i></a></li>
-//                 <li className="nav-item"><a href="" className="nav-link"><i className="fa fa-twitter fa-lg"></i></a></li>
-//                 <li className="nav-item"><a href="" className="nav-link"><i className="fa fa-github fa-lg"></i></a></li>
-//                 <li className="nav-item"><a href="" className="nav-link"><i className="fa fa-instagram fa-lg"></i></a></li>
-//             </ul>
-            
-//         </div>
-//         <div className="col-md-2">
-//             <h5 className="text-md-right">Contact Us</h5>
-            
-//         </div>
-//         <div className="col-md-5">
-//             <form>
-//                 <fieldset className="form-group">
-//                     <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Enter email"/>
-//                 </fieldset>
-//                 <fieldset className="form-group">
-//                     <textarea className="form-control" id="exampleMessage" placeholder="Message"></textarea>
-//                 </fieldset>
-//                 <fieldset className="form-group text-xs-right">
-//                     <button type="button" className="btn btn-secondary-outline btn-lg">Send</button>
-//                 </fieldset>
-//             </form>
-//         </div>
-//     </div>
-// </div>
-// </footer>
-//   )
-// }
+function Footer() {
+  return (
+    <div className="d-flex flex-column h-100 ">
 
-// export default Footer
+
+    <footer className="w-100 py-4 flex-shrink-0 position-absolute bottom-0 ">
+        <div className="container py-4">
+            <div className="row gy-4 gx-5">
+                <div className="col-lg-4 col-md-6">
+                    <h5 className="h1 text-primary">BlueIn</h5>
+                    <p className="small ">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                    <p className="small  mb-0">&copy; Copyrights. All rights reserved. <a href='/' className="text-primary">BlueIn.com</a></p>
+                </div>
+                <div className="col-lg-2 col-md-6">
+                    <h5 className="mb-3 text-primary">Quick links</h5>
+                    <ul className="list-unstyled text-muted">
+                        <li><p>Home</p></li>
+                        <li><p>About</p></li>
+                        <li><p>Get started</p></li>
+                        <li><p>FAQ</p></li>
+                    </ul>
+                </div>
+                <div className="col-lg-2 col-md-6">
+                    <h5 className="text-primary mb-3">Quick links</h5>
+                    <ul className="list-unstyled text-muted">
+                        <li><p>Home</p></li>
+                        <li><p>About</p></li>
+                        <li><p>Get started</p></li>
+                        <li><p>FAQ</p></li>
+                    </ul>
+                </div>
+                <div className="col-lg-3 col-md-6">
+                    <h5 className="text-primary mb-3">BlueIn</h5>
+                    <p className="small ">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  )
+}
+
+export default Footer

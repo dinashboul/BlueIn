@@ -4,7 +4,6 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import SignUp from "./componenets/SignUp/SignUp"
 import LoginForm from './componenets/Login/LoginForm';
 import UserCart from './componenets/Users/UserCart'
 import Navbar from './componenets/Navbar/Navbar';
@@ -17,6 +16,7 @@ import CategoriesNav from './categories/CategoriesNav';
 import CategoriesPage from './categories/CategoriesPage';
 import { useTheme } from './contexts/ThemeContext';
 import "./index.css"
+import Footer from './componenets/footer/Footer';
 function App() {
   const {theme}=useTheme()
   return(
@@ -33,9 +33,7 @@ function App() {
                 path="/category/:category"
                 render={({ match }) => <CategoriesPage category={match.params.category} />}
               />
-              <Route path='/signup'>
-                <SignUp />
-              </Route>
+              
               <Route path="/create">
                 <Create/>
               </Route>
@@ -46,7 +44,7 @@ function App() {
               <Route path='/usercart' >
                 <UserCart />
               </Route>
-              <Route path='/updateitem' >
+              <Route path="/updateitem/:itemId">
                 <UpdateItem />
               </Route>
               <Route>
@@ -55,7 +53,7 @@ function App() {
               
             </Switch>
          
-          {/* <Footer/> */}
+          <Footer/>
        
       </Router>
 

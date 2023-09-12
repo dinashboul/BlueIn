@@ -1,15 +1,24 @@
 import React from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { useLogin } from '../contexts/LoginContext';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import { useState } from 'react';
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import "./categories.css"
+import styles from "./categories.css"
+import SignUp from '../componenets/SignUp/SignUp';
 function Categories() {
   const { adminContext } = useLogin()
   const location = useLocation();
-  const x = useParams()
+  const[open,setOpen]=useState(false)
 
+  const isOpen=()=>{
+    setOpen(true)
   
-  console.log(" x is ", x)
+   }
+   const isClose=()=>{
+    setOpen(false)
+  
+   }
   return (
     <SideNav style={{
       backgroundColor: " #ecf0f5",
@@ -30,47 +39,47 @@ function Categories() {
       <SideNav.Nav defaultSelected="home" >
         {adminContext ? (
           <>
-            <NavItem eventkey="charts" >
-              <NavIcon >
-                <i style={{ fontSize: "1rem", fontweight: "bold" }} />
-                <h1 style={{ color: "blue", fontSize: "1.5rem", fontWeight: "bold", marginBottom: "20px" }} >Users</h1>
-              </NavIcon>
-              
-              <NavItem >
-                <NavText eventkey="charts/linechart">
-                  <Link to="/signup"> Add New User </Link>
+          <NavItem eventKey="home">
+            <NavIcon>
+              <i className="fa fa-fw fa-home" 
+              style={{ color: "blue", fontSize: "1.5rem", fontWeight: "bold", marginBottom: "20px",marginTop:"20px" }} >
+                Users</i>
+            </NavIcon>
+            <NavItem eventKey="charts/linechart">
+                <NavText onClick={isOpen}
+                  style={{ color: "#007bff", fontSize: "1rem", fontWeight: "bold"}}>
+                   Add New User 
                 </NavText>
-              </NavItem>
-
-              <NavItem eventkey="charts/barchart">
-                <NavText>
-                  <Link to="/deleteuser">Delete User</Link>
-                </NavText>
-              </NavItem>
-
             </NavItem>
-            <NavItem eventkey="charts" >
-              <NavIcon>
-                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '2rem' }} />
-                <h1 style={{ color: "blue", fontSize: "1.5rem", fontWeight: "bold" }} >Items</h1>
-
-              </NavIcon>
-             
-              <NavItem eventkey="charts/linechart">
+            <NavItem eventKey="charts/barchart">
                 <NavText>
-                  <Link to="/create"> Add New Item </Link>
+               <Link style={{textDecoration:"none"}} to="/deleteuser" >Delete User</Link>
                 </NavText>
-              </NavItem>
-              <NavItem eventkey="charts/barchart">
-                <NavText>
-                  <Link to="/"> Delete Item</Link>
-                </NavText>
-              </NavItem>
             </NavItem>
+            
+        </NavItem>
+        <NavItem eventKey="charts">
+            <NavIcon>
+                <i className="fa fa-fw fa-line-chart" 
+                style={{ color: "blue", fontSize: "1.5rem", fontWeight: "bold", marginBottom: "20px",marginTop:"20px" }}>
+                  Items</i>
+            </NavIcon>
+
+            <NavItem eventKey="charts/linechart">
+            <NavText>
+                  <Link style={{textDecoration:"none"}} to="/create"> Add New Item </Link>
+                </NavText>
+            </NavItem>
+            <NavItem eventKey="charts/barchart">
+            <NavText>
+                  <Link style={{textDecoration:"none"}} to="/"> Delete Item</Link>
+                </NavText>
+            </NavItem>
+        </NavItem>            
           </>) : (
           <NavItem eventkey="home" >
             <NavIcon>
-              <i style={{ fontSize: "2rem", fontweight: "bold" }} />
+              <i style={{ fontSize: "1rem", fontweight: "bold" }}></i>
             </NavIcon>
             <NavText >
               <h1
@@ -83,9 +92,9 @@ function Categories() {
           <i style={{ fontSize: "2rem", fontweight: "bold" }} />
         </NavIcon>
         <NavText >
-        <Link to="/category/kids" 
+        <Link  to="/category/kids" 
             className={` ${location.pathname === '/category/kids' ? 'active-link' : ''}`}
-            style={{color:"blue",fontSize:"1.5rem",fontWeight:"bold"}}
+            style={{textDecoration:"none", color:"blue",fontSize:"1.5rem",fontWeight:"bold"}}
           >
             Kids
           </Link>
@@ -93,7 +102,7 @@ function Categories() {
         </NavText>
         <NavIcon>
        < Link to="/category/women"
-          style={{color:"blue",fontSize:"1.5rem",fontWeight:"bold",marginBottom:"20px"}}
+          style={{textDecoration:"none", color:"blue",fontSize:"1.5rem",fontWeight:"bold",marginBottom:"20px"}}
             className={` ${location.pathname === '/category/women' ? 'active-link' : ''}`}
           >Women</Link>       
            </NavIcon>
@@ -105,8 +114,8 @@ function Categories() {
           <i style={{ fontSize: "2rem", fontweight: "bold" }} />
         </NavIcon>
         <NavText>
-       < Link to="/category/women"
-          style={{color:"blue",fontSize:"1.5rem",fontWeight:"bold",marginBottom:"20px"}}
+       < Link  to="/category/women"
+          style={{textDecoration:"none", color:"blue",fontSize:"1.5rem",fontWeight:"bold",marginBottom:"20px"}}
             className={` ${location.pathname === '/category/women' ? 'active-link' : ''}`}
           >Women</Link>       
            </NavText>
@@ -117,7 +126,7 @@ function Categories() {
         </NavIcon>
         <NavText>
           <Link to="/category/man"
-          style={{color:"blue",fontSize:"1.5rem",left:"30%",fontWeight:"bold",marginBottom:"20px"}}
+          style={{textDecoration:"none", color:"blue",fontSize:"1.5rem",left:"30%",fontWeight:"bold",marginBottom:"20px"}}
             className={` ${location.pathname === '/category/man' ? 'active-link' : ''}`}
           >Man</Link>
         </NavText>
@@ -128,7 +137,7 @@ function Categories() {
         </NavIcon>
         <NavText>
         <Link to="/category/accessories"
-          style={{color:"blue",fontSize:"1.5rem",left:"30%",fontWeight:"bold",marginBottom:"20px"}}
+          style={{textDecoration:"none", color:"blue",fontSize:"1.5rem",left:"30%",fontWeight:"bold",marginBottom:"20px"}}
             className={` ${location.pathname === '/category/accessories' ? 'active-link' : ''}`}
           >Accessories</Link>
         </NavText>
@@ -139,9 +148,9 @@ function Categories() {
         </NavIcon>
         <NavText>
         
-          <Link to="/category/bags" 
+          <Link  to="/category/bags" 
             className={` ${location.pathname === '/category/bags' ? 'active-link' : ''}`}
-            style={{color:"blue",fontSize:"1.5rem",left:"30%",fontWeight:"bold",marginBottom:"20px"}}
+            style={{textDecoration:"none", color:"blue",fontSize:"1.5rem",left:"30%",fontWeight:"bold",marginBottom:"20px"}}
 
           >
             Bags
@@ -150,6 +159,9 @@ function Categories() {
         
       </NavItem>  
       </SideNav.Nav>
+      <SignUp isOpen={open}
+          isClose={isClose}
+          open={open} />
     </SideNav>
 
   )
