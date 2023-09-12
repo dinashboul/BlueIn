@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import  styles from "./signup.css"
 import { Modal } from 'react-bootstrap';
 
 function SignUp({isOpen,isClose,open}) {

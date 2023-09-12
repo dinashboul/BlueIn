@@ -1,10 +1,9 @@
 import React from 'react'
-import { Link, useLocation, useParams } from 'react-router-dom/cjs/react-router-dom.min'
+import { Link, useLocation } from 'react-router-dom/cjs/react-router-dom.min'
 import { useLogin } from '../contexts/LoginContext';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { useState } from 'react';
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import styles from "./categories.css"
 import SignUp from '../componenets/SignUp/SignUp';
 function Categories() {
   const { adminContext } = useLogin()
