@@ -59,6 +59,7 @@ a {
   text-decoration: none; /* Remove default underline */
   transition: color 0.2s ease; /* Smooth color transition on hover */
   font-size: 1rem;
+  font-weight: bold;
 }
 
 a:hover {
