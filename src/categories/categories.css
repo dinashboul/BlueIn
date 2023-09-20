@@ -31,8 +31,7 @@ a {
 
   .category-section{
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 50px; 
+  grid-template-columns: repeat(4, 1fr); 
   min-width: auto;
   margin-inline: auto;
   margin-left: 70px;
@@ -41,7 +40,22 @@ a {
   padding-inline: 24px;
   }
 
-
+  @media screen and  (max-width: 1250px){
+    .category-section{
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      height: 2000px;
+     margin-bottom: 10%;
+     }
+  }
+@media screen and (max-width:770px) {
+  .category-section{
+    width: 300px; /* Set a fixed width for the scrollable element */
+  height: 1500px; /* Set a fixed height for the scrollable element */
+  overflow: auto; /* Display a scrollbar when content overflows */
+  }
+  
+}
   .active-link {
     color: red;
   }

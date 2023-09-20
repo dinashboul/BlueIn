@@ -117,10 +117,22 @@ Generic layout (demo looks)
   
 }
 
-@media screen and (max-width: 960px) {
-  article {
-    -container: card/inline-size;
+
+@media screen and (max-width:1400px){
+  .articles{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
   }
+}
+@media screen and (max-width: 990px) {
+  .articles {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 16px;
+    width: auto;
+    overflow: auto;
+    height:1200px  }
+
   .article-body p {
     display: none;
   }
@@ -210,11 +222,17 @@ Generic layout (demo looks)
 
 @media (max-width: 767px) {
   .el-wrapper {
-    width: 290px;
+    width: 260px;
     margin: 30px auto;
   }
 }
 
+@media screen and (max-width: 187px)  {
+  .el-wrapper {
+    width: 100%;
+    margin: 30px auto;
+  }
+}
 .el-wrapper:hover .h-bg {
   left: 0px;
 }

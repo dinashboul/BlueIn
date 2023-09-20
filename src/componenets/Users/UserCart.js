@@ -157,13 +157,13 @@ const handleDeleteItem= (favoriteItemsInDatabase)=>{
     })
 
 }
-
-
-return (<section>
+const isSmallScreen1380 = window.innerWidth <= 1380;
+return (<section className='profilepage'>
   {user?(<>
   <div className='div-container'
   style={{
-    display:'grid',gridTemplateRows: "repeat(2,1fr) ",marginTop:"3%",gridColumn: "1",gap:"10%",
+    display:'grid',gridTemplateRows: "repeat(auto-fill, minmax(320px, 1fr)) ",marginTop:"3%",gridColumn: "1",
+    gap:!isSmallScreen1380?"7%":"7%",
     }}>
     <div className="image-area"  >
       <div className="img-wrapper" >
@@ -197,8 +197,8 @@ return (<section>
           />}
       </div>
     </div>
-    <span style={{
-    color:'blue',fontSize:"1.3rem",fontWeight:"bold",marginLeft:"30%",maxWidth:"100%",}}>
+    <span className='spanboutton' style={{
+    color:'blue',fontSize:"1.3rem",fontWeight:"bold",marginLeft:"30%",maxWidth:"100%"}}>
       <button  onClick={handleDamege} type="reset"
       style={{width:"300px",display:"flex",alignItems:"center",justifyContent:'center'}}
       >Refresh your items</button>
@@ -206,12 +206,10 @@ return (<section>
  </div>
 {/* // ////////////////////// Favorite item /////////////////////////// */}
 
-<section className="articles" style={{marginTop:"3%",marginLeft:'50%',marginRight:"40px",
-    gridTemplateColumns: "repeat(3, 1fr)"}}>
-  
-  {data.favorite&&data.favorite.map((item)=>
+<div className='favouriteitems'>
+ {data.favorite&&data.favorite.map((item)=>
       
-      <div className="container page-wrapper"  key={item.item_id}>
+      <div className=" container page-wrapper "  key={item.item_id}>
   <div className="page-inner">
     <div >
       <div className="el-wrapper">
@@ -246,7 +244,7 @@ return (<section>
 </div>
    )} 
 
-</section>
+</div>
   
 </>
 

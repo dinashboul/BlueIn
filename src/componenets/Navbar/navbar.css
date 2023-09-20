@@ -3,77 +3,125 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  height:40%;
+  height: 40%;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
   box-sizing: border-box;
   background: #ecf0f3;
   position: relative;
- width: 100%;
+  width: 100%;
 }
 
 .logo-section {
   flex: 1;
   margin-left: 8%;
- 
+
 }
 
 .links {
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
   text-align: center;
-  
+
 }
 
 .list {
   list-style: none;
   padding: 0;
   margin: 0;
-  display:flex;
-  align-items: center;
-  width:100%;
-  
-}
-
-.buttonclass {
-  flex: 1;
   display: flex;
-  justify-content:space-around ;
-  gap: 70px;
- position: absolute;
- right: 0;
-  
-
+  align-items: center;
+  width: 100%;
 
 }
+
+
 
 .profile-image {
-  width: 50px; /* Adjust the size as needed */
-  height: 50px; /* Adjust the size as needed */
-  border-radius: 50%; /* Create a circular shape */
-  object-fit: cover; /* Maintain aspect ratio and cover */
- overflow: cover;
+  width: 50px;
+  /* Adjust the size as needed */
+  height: 50px;
+  /* Adjust the size as needed */
+  border-radius: 50%;
+  /* Create a circular shape */
+  object-fit: cover;
+  /* Maintain aspect ratio and cover */
+  overflow: cover;
 }
 
 a {
-  color: #007bff; /* Blue color for links */
-  text-decoration: none; /* Remove default underline */
-  transition: color 0.2s ease; /* Smooth color transition on hover */
+  color: #007bff;
+  /* Blue color for links */
+  text-decoration: none;
+  /* Remove default underline */
+  transition: color 0.2s ease;
+  /* Smooth color transition on hover */
   font-size: 1rem;
   font-weight: bold;
 }
 
 a:hover {
-  color: #0056b3; /* Darker blue color on hover */
-  text-decoration:none
+  color: #0056b3;
+  /* Darker blue color on hover */
+  text-decoration: none
 }
 
-.logout-button{
-  margin-right:"8%";
+.logout-button {
+  margin-right: "8%";
   width: "20px";
-  margin-top:0;
+  margin-top: 0;
   color: "white";
-  font-size:"1em";
-  border-radius:30px;
+  font-size: "1em";
+  border-radius: 30px;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
+.buttonclass {
+  display: none;
+}
+/* Initially hide the menu */
+.menu {
+  display: none;
+}
+.boxmenu{
+  display: grid;
+  grid-template-rows: repeat(2,1fr);
+  width: 200px; /* Set the width of the box */
+  border: 1px solid #ccc; /* Add a border */
+  padding: 10px; /* Add some padding for spacing */
+  background-color: #f7f7f7; /* Set a background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 999;
+  position: absolute;
+  right: 0;
+  top:10%;
+
+}
+/* Display the button when the screen width is <= 800px */
+@media screen and (min-width: 800px) {
+  .buttonclass {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    position: absolute;
+    right: 0;
+  }
+  .boxmenu{
+    display: none;
+  }
+}
+
+/* Display the menu when the screen width is > 800px */
+@media screen and (max-width: 801px) {
+  .menu {
+    width:100px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    margin-right: 5%;
+    border-radius: 12px;
+    
+  }
+}

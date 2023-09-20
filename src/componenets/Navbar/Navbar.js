@@ -25,6 +25,10 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const { nameContext } = useLogin()
 
+  const [isDisplay,setIsDisplay]=useState(false)
+  const isShow =()=>{
+    setIsDisplay(!isDisplay)
+  }
   const handleSearch = (e) => {
     if (e.keyCode === 13) {
       console.log("search--> ", searchQuery)
@@ -90,9 +94,9 @@ const Navbar = () => {
 
 
           {user ? (
-            <div className="buttonclass" style={{ disple: "flex", aspangnItems: "space-around", gap: "30px" }}>
-
-
+            <> 
+            <button className="menu" onClick={isShow}> Menu</button>
+            <div className={!isDisplay ?"buttonclass" :"boxmenu"}>
               <Link to="/usercart"> <img className="profile-image"
                 src={imageContext} alt="" /></Link>
               <Link to="/usercart" style={{ color: "#007bff", fontSize: "1rem" ,textDecoration:"none"}}>{nameContext}</Link>
@@ -101,7 +105,7 @@ const Navbar = () => {
                 style={{ width: "100px", height: "50px" ,marginRight:"8%",textAlign:"center"}}
               >Logout</button>
             </div>
-
+            </>
           ) : (<div style={{
             marginRight: "8%", display: "flex", justifyContent: "space-around",
             gap: "30px", alignItems: "center", right: "0", position: "absolute",
@@ -113,7 +117,7 @@ const Navbar = () => {
         </div>
 
      
-
+          
           <SignUp isOpen={open}
           isClose={isClose}
           open={open} />

@@ -4,7 +4,7 @@ import "./footer.css"
 
 function Footer() {
   return (
-    <div className="d-flex flex-column h-100 ">
+    
 
 
     <footer className="w-100 py-4 flex-shrink-0 position-absolute bottom-0 ">
@@ -41,7 +41,6 @@ function Footer() {
             </div>
         </div>
     </footer>
-</div>
   )
 }
 
